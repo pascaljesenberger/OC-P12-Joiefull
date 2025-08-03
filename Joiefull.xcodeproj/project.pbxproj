@@ -11,7 +11,7 @@
 		C6CCB97A2E3F83C300AC10A2 /* JoiefullUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CCB9772E3F83C300AC10A2 /* JoiefullUITests.swift */; };
 		C6CCB97B2E3F83C300AC10A2 /* JoiefullUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CCB9782E3F83C300AC10A2 /* JoiefullUITestsLaunchTests.swift */; };
 		C6CCB9812E3F83C500AC10A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6CCB97C2E3F83C500AC10A2 /* Assets.xcassets */; };
-		C6CCB9822E3F83C500AC10A2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CCB97D2E3F83C500AC10A2 /* ContentView.swift */; };
+		C6CCB9822E3F83C500AC10A2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CCB97D2E3F83C500AC10A2 /* HomeView.swift */; };
 		C6CCB9832E3F83C500AC10A2 /* JoiefullApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CCB97F2E3F83C500AC10A2 /* JoiefullApp.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,8 +40,7 @@
 		C6CCB9772E3F83C300AC10A2 /* JoiefullUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoiefullUITests.swift; sourceTree = "<group>"; };
 		C6CCB9782E3F83C300AC10A2 /* JoiefullUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoiefullUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C6CCB97C2E3F83C500AC10A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C6CCB97D2E3F83C500AC10A2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		C6CCB97E2E3F83C500AC10A2 /* Joiefull.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Joiefull.entitlements; sourceTree = "<group>"; };
+		C6CCB97D2E3F83C500AC10A2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		C6CCB97F2E3F83C500AC10A2 /* JoiefullApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoiefullApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,12 +109,43 @@
 		C6CCB9802E3F83C500AC10A2 /* Joiefull */ = {
 			isa = PBXGroup;
 			children = (
-				C6CCB97C2E3F83C500AC10A2 /* Assets.xcassets */,
-				C6CCB97D2E3F83C500AC10A2 /* ContentView.swift */,
-				C6CCB97E2E3F83C500AC10A2 /* Joiefull.entitlements */,
-				C6CCB97F2E3F83C500AC10A2 /* JoiefullApp.swift */,
+				C6CCB9872E3F869B00AC10A2 /* Resources */,
+				C6CCB9862E3F868B00AC10A2 /* App */,
+				C6CCB9842E3F862700AC10A2 /* Views */,
+				C6CCB9852E3F862D00AC10A2 /* ViewModels */,
 			);
 			path = Joiefull;
+			sourceTree = "<group>";
+		};
+		C6CCB9842E3F862700AC10A2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C6CCB97D2E3F83C500AC10A2 /* HomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C6CCB9852E3F862D00AC10A2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		C6CCB9862E3F868B00AC10A2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C6CCB97F2E3F83C500AC10A2 /* JoiefullApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C6CCB9872E3F869B00AC10A2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C6CCB97C2E3F83C500AC10A2 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,7 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6CCB9822E3F83C500AC10A2 /* ContentView.swift in Sources */,
+				C6CCB9822E3F83C500AC10A2 /* HomeView.swift in Sources */,
 				C6CCB9832E3F83C500AC10A2 /* JoiefullApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,7 +443,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Joiefull/Joiefull.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GJ746626DJ;
@@ -453,7 +482,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Joiefull/Joiefull.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GJ746626DJ;
