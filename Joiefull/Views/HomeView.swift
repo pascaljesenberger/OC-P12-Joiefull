@@ -8,10 +8,20 @@
 import SwiftUI
 
 struct HomeView: View {
+    @StateObject private var viewModel = HomeViewModel()
+    
     var body: some View {
         NavigationStack {
             VStack {
+                List {
+                    ForEach(viewModel.products) { product in
+                        Text(product.name)
+                    }
+                }
             }
+        }
+        .onAppear {
+            viewModel.loadProducts()
         }
     }
 }
