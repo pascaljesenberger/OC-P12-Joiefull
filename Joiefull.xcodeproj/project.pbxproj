@@ -6,6 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C6CCB9762E3F83C100AC10A2 /* JoiefullTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CCB9742E3F83C100AC10A2 /* JoiefullTests.swift */; };
+		C6CCB97A2E3F83C300AC10A2 /* JoiefullUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CCB9772E3F83C300AC10A2 /* JoiefullUITests.swift */; };
+		C6CCB97B2E3F83C300AC10A2 /* JoiefullUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CCB9782E3F83C300AC10A2 /* JoiefullUITestsLaunchTests.swift */; };
+		C6CCB9812E3F83C500AC10A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6CCB97C2E3F83C500AC10A2 /* Assets.xcassets */; };
+		C6CCB9822E3F83C500AC10A2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CCB97D2E3F83C500AC10A2 /* ContentView.swift */; };
+		C6CCB9832E3F83C500AC10A2 /* JoiefullApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CCB97F2E3F83C500AC10A2 /* JoiefullApp.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		C6CCB9582E3F83B800AC10A2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,25 +36,14 @@
 		C6CCB9492E3F83B700AC10A2 /* Joiefull.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Joiefull.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6CCB9572E3F83B800AC10A2 /* JoiefullTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JoiefullTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6CCB9612E3F83B800AC10A2 /* JoiefullUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JoiefullUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6CCB9742E3F83C100AC10A2 /* JoiefullTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoiefullTests.swift; sourceTree = "<group>"; };
+		C6CCB9772E3F83C300AC10A2 /* JoiefullUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoiefullUITests.swift; sourceTree = "<group>"; };
+		C6CCB9782E3F83C300AC10A2 /* JoiefullUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoiefullUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C6CCB97C2E3F83C500AC10A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C6CCB97D2E3F83C500AC10A2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C6CCB97E2E3F83C500AC10A2 /* Joiefull.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Joiefull.entitlements; sourceTree = "<group>"; };
+		C6CCB97F2E3F83C500AC10A2 /* JoiefullApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoiefullApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		C6CCB94B2E3F83B700AC10A2 /* Joiefull */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Joiefull;
-			sourceTree = "<group>";
-		};
-		C6CCB95A2E3F83B800AC10A2 /* JoiefullTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = JoiefullTests;
-			sourceTree = "<group>";
-		};
-		C6CCB9642E3F83B800AC10A2 /* JoiefullUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = JoiefullUITests;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		C6CCB9462E3F83B700AC10A2 /* Frameworks */ = {
@@ -75,9 +73,9 @@
 		C6CCB9402E3F83B700AC10A2 = {
 			isa = PBXGroup;
 			children = (
-				C6CCB94B2E3F83B700AC10A2 /* Joiefull */,
-				C6CCB95A2E3F83B800AC10A2 /* JoiefullTests */,
-				C6CCB9642E3F83B800AC10A2 /* JoiefullUITests */,
+				C6CCB9802E3F83C500AC10A2 /* Joiefull */,
+				C6CCB9752E3F83C100AC10A2 /* JoiefullTests */,
+				C6CCB9792E3F83C300AC10A2 /* JoiefullUITests */,
 				C6CCB94A2E3F83B700AC10A2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +88,34 @@
 				C6CCB9612E3F83B800AC10A2 /* JoiefullUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C6CCB9752E3F83C100AC10A2 /* JoiefullTests */ = {
+			isa = PBXGroup;
+			children = (
+				C6CCB9742E3F83C100AC10A2 /* JoiefullTests.swift */,
+			);
+			path = JoiefullTests;
+			sourceTree = "<group>";
+		};
+		C6CCB9792E3F83C300AC10A2 /* JoiefullUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C6CCB9772E3F83C300AC10A2 /* JoiefullUITests.swift */,
+				C6CCB9782E3F83C300AC10A2 /* JoiefullUITestsLaunchTests.swift */,
+			);
+			path = JoiefullUITests;
+			sourceTree = "<group>";
+		};
+		C6CCB9802E3F83C500AC10A2 /* Joiefull */ = {
+			isa = PBXGroup;
+			children = (
+				C6CCB97C2E3F83C500AC10A2 /* Assets.xcassets */,
+				C6CCB97D2E3F83C500AC10A2 /* ContentView.swift */,
+				C6CCB97E2E3F83C500AC10A2 /* Joiefull.entitlements */,
+				C6CCB97F2E3F83C500AC10A2 /* JoiefullApp.swift */,
+			);
+			path = Joiefull;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -106,9 +132,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				C6CCB94B2E3F83B700AC10A2 /* Joiefull */,
 			);
 			name = Joiefull;
 			packageProductDependencies = (
@@ -130,9 +153,6 @@
 			dependencies = (
 				C6CCB9592E3F83B800AC10A2 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				C6CCB95A2E3F83B800AC10A2 /* JoiefullTests */,
-			);
 			name = JoiefullTests;
 			packageProductDependencies = (
 			);
@@ -152,9 +172,6 @@
 			);
 			dependencies = (
 				C6CCB9632E3F83B800AC10A2 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				C6CCB9642E3F83B800AC10A2 /* JoiefullUITests */,
 			);
 			name = JoiefullUITests;
 			packageProductDependencies = (
@@ -212,6 +229,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6CCB9812E3F83C500AC10A2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +254,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6CCB9822E3F83C500AC10A2 /* ContentView.swift in Sources */,
+				C6CCB9832E3F83C500AC10A2 /* JoiefullApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6CCB9762E3F83C100AC10A2 /* JoiefullTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +271,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6CCB97A2E3F83C300AC10A2 /* JoiefullUITests.swift in Sources */,
+				C6CCB97B2E3F83C300AC10A2 /* JoiefullUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,10 +439,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				XROS_DEPLOYMENT_TARGET = 2.5;
 			};
 			name = Debug;
@@ -455,10 +479,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				XROS_DEPLOYMENT_TARGET = 2.5;
 			};
 			name = Release;
@@ -477,10 +502,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.jesenberger.pascal.JoiefullTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Joiefull.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Joiefull";
 				XROS_DEPLOYMENT_TARGET = 2.5;
 			};
@@ -500,10 +526,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.jesenberger.pascal.JoiefullTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Joiefull.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Joiefull";
 				XROS_DEPLOYMENT_TARGET = 2.5;
 			};
@@ -522,10 +549,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.jesenberger.pascal.JoiefullUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Joiefull;
 				XROS_DEPLOYMENT_TARGET = 2.5;
 			};
@@ -544,10 +572,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.jesenberger.pascal.JoiefullUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Joiefull;
 				XROS_DEPLOYMENT_TARGET = 2.5;
 			};
