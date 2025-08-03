@@ -23,7 +23,8 @@ struct ProductInfo: View {
 
                 Image("customStar")
                     .resizable()
-                    .frame(width: 12, height: 12)
+                    .scaledToFit()
+                    .frame(width: 12)
             }
 
             HStack {
@@ -44,3 +45,8 @@ struct ProductInfo: View {
         .padding(.horizontal)
     }
 }
+
+
+#Preview {
+    ProductInfo(product: .preview)
+}  
