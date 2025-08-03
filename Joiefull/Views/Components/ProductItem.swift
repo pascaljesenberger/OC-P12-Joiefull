@@ -11,7 +11,7 @@ struct ProductItem: View {
     let product: Product
 
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 8) {
             AsyncImage(url: URL(string: product.picture.url)) { image in
                 image
                     .resizable()
@@ -19,12 +19,13 @@ struct ProductItem: View {
             } placeholder: {
                 Color.gray.opacity(0.2)
             }
-            .frame(width: 198, height: 198)
+            .frame(height: 198)
+            .frame(maxWidth: 200)
+            .clipped()
             .cornerRadius(16)
 
-            Text(product.name)
-                .font(.system(size: 14, weight: .semibold))
-                .foregroundColor(.black)
+            ProductInfo(product: product)
         }
+        .frame(width: 200)
     }
 }
