@@ -13,6 +13,7 @@
 		C6CCB9812E3F83C500AC10A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6CCB97C2E3F83C500AC10A2 /* Assets.xcassets */; };
 		C6CCB9822E3F83C500AC10A2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CCB97D2E3F83C500AC10A2 /* HomeView.swift */; };
 		C6CCB9832E3F83C500AC10A2 /* JoiefullApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CCB97F2E3F83C500AC10A2 /* JoiefullApp.swift */; };
+		C6CCB9892E3F8BBE00AC10A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6CCB9882E3F8BBE00AC10A2 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		C6CCB97C2E3F83C500AC10A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C6CCB97D2E3F83C500AC10A2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		C6CCB97F2E3F83C500AC10A2 /* JoiefullApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoiefullApp.swift; sourceTree = "<group>"; };
+		C6CCB9882E3F8BBE00AC10A2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				C6CCB97F2E3F83C500AC10A2 /* JoiefullApp.swift */,
+				C6CCB9882E3F8BBE00AC10A2 /* LaunchScreen.storyboard */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6CCB9892E3F8BBE00AC10A2 /* LaunchScreen.storyboard in Resources */,
 				C6CCB9812E3F83C500AC10A2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,6 +459,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -494,6 +499,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
