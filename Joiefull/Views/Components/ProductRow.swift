@@ -29,3 +29,7 @@ struct ProductRow: View {
         }
     }
 }
+
+#Preview {
+    ProductRow(category: .accessories, products: [.preview])
+}
