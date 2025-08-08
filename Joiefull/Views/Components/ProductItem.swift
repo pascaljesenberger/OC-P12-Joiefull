@@ -12,21 +12,26 @@ struct ProductItem: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            AsyncImage(url: URL(string: product.picture.url)) { image in
-                image
-                    .resizable()
-                    .scaledToFill()
-            } placeholder: {
-                Color.gray.opacity(0.2)
+            ZStack(alignment: .bottomTrailing) {
+                AsyncImage(url: URL(string: product.picture.url)) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                } placeholder: {
+                    Color.gray.opacity(0.2)
+                }
+                .frame(height: 198)
+                .frame(maxWidth: 198)
+                .clipped()
+                .cornerRadius(20)
+                
+                LikeItem(product: product)
+                    .padding(8)
             }
-            .frame(height: 198)
-            .frame(maxWidth: 200)
-            .clipped()
-            .cornerRadius(16)
 
             ProductInfo(product: product)
         }
-        .frame(width: 200)
+        .frame(width: 198)
     }
 }
 

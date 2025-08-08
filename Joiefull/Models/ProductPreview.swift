@@ -12,7 +12,7 @@ extension Product {
         Product(
             id: 1,
             picture: Picture(
-                url: "https://images.unsplash.com/photo-1593032465171-c9dc71f8a13f", // image publique
+                url: "",
                 description: "Exemple de produit"
             ),
             name: "Pendentif bleu pour femme",

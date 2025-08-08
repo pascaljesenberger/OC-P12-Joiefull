@@ -16,7 +16,7 @@ struct HomeView: View {
                 ForEach(Category.allCases, id: \.self) { category in
                     let filtered = viewModel.products.filter { $0.category == category }
                     if !filtered.isEmpty {
-                        ProductRow(category: category, products: filtered)
+                        ProductRow(category: category.displayName, products: filtered)
                     }
                 }
             }

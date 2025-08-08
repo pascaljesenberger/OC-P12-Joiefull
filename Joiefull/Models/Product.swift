@@ -27,4 +27,13 @@ enum Category: String, Decodable, CaseIterable {
     case bottoms = "BOTTOMS"
     case shoes = "SHOES"
     case tops = "TOPS"
+    
+    var displayName: String {
+        switch self {
+        case .accessories: return "Accessoires"
+        case .bottoms: return "Bas"
+        case .shoes: return "Chaussures"
+        case .tops: return "Hauts"
+        }
+    }
 }
