@@ -13,7 +13,7 @@ struct ProductRow: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text(category.rawValue.capitalized)
+            Text(category.displayName)
                 .font(.system(size: 22, weight: .semibold))
                 .foregroundColor(.black)
                 .padding(.horizontal)

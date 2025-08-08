@@ -43,6 +43,7 @@ struct ProductInfo: View {
             }
         }
         .padding(.horizontal)
+        .frame(minHeight: 60, alignment: .topLeading)
     }
 }
 

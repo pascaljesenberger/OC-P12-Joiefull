@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C640BD342E4688B900128701 /* HangerAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C640BD332E4688B900128701 /* HangerAnimation.swift */; };
 		C6CCB9762E3F83C100AC10A2 /* JoiefullTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CCB9742E3F83C100AC10A2 /* JoiefullTests.swift */; };
 		C6CCB97A2E3F83C300AC10A2 /* JoiefullUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CCB9772E3F83C300AC10A2 /* JoiefullUITests.swift */; };
 		C6CCB97B2E3F83C300AC10A2 /* JoiefullUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CCB9782E3F83C300AC10A2 /* JoiefullUITestsLaunchTests.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C640BD332E4688B900128701 /* HangerAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangerAnimation.swift; sourceTree = "<group>"; };
 		C6CCB9492E3F83B700AC10A2 /* Joiefull.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Joiefull.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6CCB9572E3F83B800AC10A2 /* JoiefullTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JoiefullTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6CCB9612E3F83B800AC10A2 /* JoiefullUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JoiefullUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,6 +197,7 @@
 				C6CCB9972E3FAF8100AC10A2 /* ProductInfo.swift */,
 				C6CCB9952E3FA71700AC10A2 /* ProductRow.swift */,
 				C6CCB9992E3FB1C000AC10A2 /* LikeItem.swift */,
+				C640BD332E4688B900128701 /* HangerAnimation.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				C6CCB99A2E3FB1C000AC10A2 /* LikeItem.swift in Sources */,
 				C6CCB9912E3FA3E300AC10A2 /* HomeViewModel.swift in Sources */,
 				C6CCB9962E3FA71700AC10A2 /* ProductRow.swift in Sources */,
+				C640BD342E4688B900128701 /* HangerAnimation.swift in Sources */,
 				C6CCB9942E3FA6CD00AC10A2 /* ProductItem.swift in Sources */,
 				C6CCB98B2E3FA27F00AC10A2 /* Product.swift in Sources */,
 			);

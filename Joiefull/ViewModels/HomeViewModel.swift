@@ -18,13 +18,13 @@ class HomeViewModel: ObservableObject {
 
         ProductService.shared.fetchProducts { result in
             DispatchQueue.main.async {
-                self.isLoading = false
                 switch result {
                 case .success(let products):
                     self.products = products
                 case .failure(let error):
                     self.errorMessage = error.localizedDescription
                 }
+                self.isLoading = false
             }
         }
     }
