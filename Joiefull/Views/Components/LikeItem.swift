@@ -12,10 +12,14 @@ struct LikeItem: View {
     
     var body: some View {
         HStack {
-            Image("customHeart")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 14)
+            Button(action: {
+                
+            }) {
+                Image("customHeart")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 14)
+            }
             
             Text("\(product.likes)")
                 .font(.system(size: 14, weight: .semibold))

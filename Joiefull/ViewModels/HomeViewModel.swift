@@ -21,11 +21,15 @@ class HomeViewModel: ObservableObject {
                 switch result {
                 case .success(let products):
                     self.products = products
-                case .failure(let error):
-                    self.errorMessage = error.localizedDescription
+                case .failure(_):
+                    self.errorMessage = "Une erreur est survenue"
                 }
                 self.isLoading = false
             }
         }
     }
+    
+    func products(for category: Category) -> [Product] {
+            return products.filter { $0.category == category }
+        }
 }
