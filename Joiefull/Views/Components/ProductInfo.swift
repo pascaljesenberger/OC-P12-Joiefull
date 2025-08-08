@@ -20,11 +20,15 @@ struct ProductInfo: View {
                     .multilineTextAlignment(.leading)
 
                 Spacer()
-
+                
                 Image("customStar")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 12)
+                
+                Text(product.rating)
+                    .font(.system(size: 14))
+                    .foregroundColor(.black)
             }
 
             HStack {
