@@ -15,10 +15,10 @@ struct Product: Identifiable, Decodable {
     let likes: Int
     let price: Double
     let original_price: Double
-
+    
     var rating: String = String(format: "%.2f", Double.random(in: 3.0...5.0))
     var isLiked: Bool = false
-
+    
     enum CodingKeys: String, CodingKey {
         case id, picture, name, category, likes, price, original_price
     }

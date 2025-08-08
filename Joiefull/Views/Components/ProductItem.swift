@@ -1,5 +1,5 @@
 //
-//  CategoryItem.swift
+//  ProductItem.swift
 //  Joiefull
 //
 //  Created by Pascal Jesenberger on 03/08/2025.
@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct ProductItem: View {
-    let product: Product
-
+    @StateObject private var viewModel: ProductViewModel
+    
+    init(product: Product) {
+        self._viewModel = StateObject(wrappedValue: ProductViewModel(product: product))
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             ZStack(alignment: .bottomTrailing) {
-                AsyncImage(url: URL(string: product.picture.url)) { image in
+                AsyncImage(url: URL(string: viewModel.product.picture.url)) { image in
                     image
                         .resizable()
                         .scaledToFill()
@@ -25,11 +29,15 @@ struct ProductItem: View {
                 .clipped()
                 .cornerRadius(20)
                 
-                LikeItem(product: product)
-                    .padding(8)
+                LikeItem(
+                    likes: viewModel.currentLikes,
+                    isLiked: viewModel.isLiked,
+                    onToggle: viewModel.toggleLike
+                )
+                .padding(8)
             }
-
-            ProductInfo(product: product)
+            
+            ProductInfo(product: viewModel.product)
         }
         .frame(width: 198)
     }

@@ -8,32 +8,37 @@
 import SwiftUI
 
 struct LikeItem: View {
-    let product: Product
+    let likes: Int
+    let isLiked: Bool
+    let onToggle: () -> Void
     
     var body: some View {
-        HStack {
-            Button(action: {
-                
-            }) {
-                Image("customHeart")
+        
+        Button(action: onToggle) {
+            HStack {
+                Image(isLiked ? "customHeartFilled" : "customHeart")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 14)
+                    .foregroundColor(isLiked ? .red : .primary)
+                
+                Text("\(likes)")
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundColor(.black)
+                    .monospacedDigit()
             }
-            
-            Text("\(product.likes)")
-                .font(.system(size: 14, weight: .semibold))
-                .foregroundColor(.black)
+            .padding(.horizontal, 8)
+            .padding(.vertical, 6)
+            .background(Color.white)
+            .clipShape(Capsule())
         }
-        .padding(.horizontal, 8)
-        .padding(.vertical, 6)
-        .background(Color.white)
-        .clipShape(Capsule())
-        
     }
 }
 
 #Preview {
-    LikeItem(product: .preview)
-        .background(Color.black)
+    VStack {
+        LikeItem(likes: 42, isLiked: false, onToggle: {})
+        LikeItem(likes: 43, isLiked: true, onToggle: {})
+    }
+    .background(Color.black)
 }

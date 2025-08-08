@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProductInfo: View {
     let product: Product
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             HStack(alignment: .top) {
@@ -18,7 +18,7 @@ struct ProductInfo: View {
                     .foregroundColor(.black)
                     .lineLimit(2)
                     .multilineTextAlignment(.leading)
-
+                
                 Spacer()
                 
                 Image("customStar")
@@ -29,15 +29,16 @@ struct ProductInfo: View {
                 Text(product.rating)
                     .font(.system(size: 14))
                     .foregroundColor(.black)
+                    .monospacedDigit()
             }
-
+            
             HStack {
                 Text(String(format: "%.2f €", product.price))
                     .font(.system(size: 14))
                     .foregroundColor(.black)
-
+                
                 Spacer()
-
+                
                 if product.original_price > product.price {
                     Text(String(format: "%.2f €", product.original_price))
                         .font(.system(size: 14))

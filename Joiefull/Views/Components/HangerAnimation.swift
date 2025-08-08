@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HangerAnimation: View {
     @State private var angle: Double = -20
-
+    
     var body: some View {
         VStack {
             Image("hanger")

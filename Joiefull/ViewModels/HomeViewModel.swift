@@ -11,11 +11,11 @@ class HomeViewModel: ObservableObject {
     @Published var products: [Product] = []
     @Published var isLoading = false
     @Published var errorMessage: String?
-
+    
     func loadProducts() {
         isLoading = true
         errorMessage = nil
-
+        
         ProductService.shared.fetchProducts { result in
             DispatchQueue.main.async {
                 switch result {
@@ -30,6 +30,6 @@ class HomeViewModel: ObservableObject {
     }
     
     func products(for category: Category) -> [Product] {
-            return products.filter { $0.category == category }
-        }
+        return products.filter { $0.category == category }
+    }
 }
