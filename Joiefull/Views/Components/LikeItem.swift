@@ -26,6 +26,10 @@ struct LikeItem: View {
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundColor(.black)
                     .monospacedDigit()
+                    .contentTransition(.numericText(value: Double(likes)))
+                    .transaction { t in
+                        t.animation = .default
+                    }
             }
             .padding(.horizontal, 8)
             .padding(.vertical, 6)
