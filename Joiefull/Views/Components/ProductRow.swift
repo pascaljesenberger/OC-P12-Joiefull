@@ -10,16 +10,18 @@ import SwiftUI
 struct ProductRow: View {
     let category: Category
     let products: [Product]
+    @Environment(\.sizeCategory) private var sizeCategory
+    private let device = UIDevice.current
     
     var body: some View {
         VStack(alignment: .leading) {
             Text(category.displayName)
-                .font(.system(size: 22, weight: .semibold))
+                .font(.system(size: ResponsiveSizes.fontSize(22, for: sizeCategory, device: device), weight: .semibold))
                 .foregroundColor(.black)
                 .padding(.horizontal)
             
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 8) {
+                HStack(spacing: ResponsiveSizes.fontSize(8, for: sizeCategory, device: device)) {
                     ForEach(products) { product in
                         ProductItem(product: product)
                     }

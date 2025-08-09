@@ -9,13 +9,15 @@ import SwiftUI
 
 struct ProductItem: View {
     @StateObject private var viewModel: ProductViewModel
+    @Environment(\.sizeCategory) private var sizeCategory
+    private let device = UIDevice.current
     
     init(product: Product) {
         self._viewModel = StateObject(wrappedValue: ProductViewModel(product: product))
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: ResponsiveSizes.fontSize(8, for: sizeCategory, device: device)) {
             ZStack(alignment: .bottomTrailing) {
                 AsyncImage(url: URL(string: viewModel.product.picture.url)) { image in
                     image
@@ -25,22 +27,22 @@ struct ProductItem: View {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())
                 }
-                .frame(height: 198)
-                .frame(maxWidth: 198)
+                .frame(height: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device))
+                .frame(maxWidth: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device))
                 .clipped()
-                .cornerRadius(20)
+                .cornerRadius(ResponsiveSizes.imageSize(20, for: sizeCategory, device: device))
                 
                 LikeItem(
                     likes: viewModel.currentLikes,
                     isLiked: viewModel.isLiked,
                     onToggle: viewModel.toggleLike
                 )
-                .padding(8)
+                .padding(ResponsiveSizes.fontSize(8, for: sizeCategory, device: device))
             }
             
             ProductInfo(product: viewModel.product)
         }
-        .frame(width: 198)
+        .frame(width: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device))
     }
 }
 

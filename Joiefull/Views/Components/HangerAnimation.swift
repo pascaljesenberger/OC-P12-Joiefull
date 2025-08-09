@@ -9,13 +9,15 @@ import SwiftUI
 
 struct HangerAnimation: View {
     @State private var angle: Double = -20
+    @Environment(\.sizeCategory) private var sizeCategory
+    private let device = UIDevice.current
     
     var body: some View {
         VStack {
             Image("hanger")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 140)
+                .frame(width: ResponsiveSizes.imageSize(140, for: sizeCategory, device: device))
                 .rotationEffect(.degrees(angle), anchor: .top)
                 .animation(
                     Animation.easeInOut(duration: 1)

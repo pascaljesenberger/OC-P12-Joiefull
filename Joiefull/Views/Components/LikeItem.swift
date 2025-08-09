@@ -11,6 +11,8 @@ struct LikeItem: View {
     let likes: Int
     let isLiked: Bool
     let onToggle: () -> Void
+    @Environment(\.sizeCategory) private var sizeCategory
+    private let device = UIDevice.current
     
     @State private var animate = false
     
@@ -24,13 +26,13 @@ struct LikeItem: View {
         } label: {
             HStack {
                 Image(systemName: isLiked ? "heart.fill" : "heart")
-                    .font(.body)
+                    .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device)))
                     .foregroundColor(isLiked ? .red : .primary)
                     .scaleEffect(animate ? 1.4 : 1)
                     .animation(.easeOut(duration: 0.1), value: animate)
                 
                 Text("\(likes)")
-                    .font(.system(size: 14, weight: .semibold))
+                    .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device), weight: .semibold))
                     .foregroundColor(isLiked ? .red : .primary)
                     .monospacedDigit()
                     .contentTransition(.numericText(value: Double(likes)))
@@ -38,8 +40,8 @@ struct LikeItem: View {
                         t.animation = .default
                     }
             }
-            .padding(.horizontal, 8)
-            .padding(.vertical, 6)
+            .padding(.horizontal, ResponsiveSizes.fontSize(8, for: sizeCategory, device: device))
+            .padding(.vertical, ResponsiveSizes.fontSize(6, for: sizeCategory, device: device))
             .background(Color.white)
             .clipShape(Capsule())
         }
