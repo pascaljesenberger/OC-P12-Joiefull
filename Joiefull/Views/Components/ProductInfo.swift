@@ -12,15 +12,13 @@ struct ProductInfo: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            HStack(alignment: .top) {
                 Text(product.name)
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundColor(.black)
                     .lineLimit(2)
                     .multilineTextAlignment(.leading)
                 
-                Spacer()
-                
+            HStack {
                 Image(systemName: "star.fill")
                     .font(.body)
                     .foregroundColor(.appOrange)
