@@ -21,10 +21,9 @@ struct ProductInfo: View {
                 
                 Spacer()
                 
-                Image("customStar")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 12)
+                Image(systemName: "star.fill")
+                    .font(.body)
+                    .foregroundColor(.appOrange)
                 
                 Text(product.rating)
                     .font(.system(size: 14))

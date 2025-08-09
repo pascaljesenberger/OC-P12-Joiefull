@@ -22,7 +22,8 @@ struct ProductItem: View {
                         .resizable()
                         .scaledToFill()
                 } placeholder: {
-                    Color.gray.opacity(0.2)
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
                 }
                 .frame(height: 198)
                 .frame(maxWidth: 198)

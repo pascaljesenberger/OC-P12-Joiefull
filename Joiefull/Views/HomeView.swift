@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
-    @State private var didLoad = false
     
     var body: some View {
         if viewModel.isLoading {
@@ -31,12 +30,6 @@ struct HomeView: View {
                     }
                 }
                 .padding(.top)
-            }
-            .onAppear {
-                if !didLoad {
-                    viewModel.loadProducts()
-                    didLoad = true
-                }
             }
         }
     }

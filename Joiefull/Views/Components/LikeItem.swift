@@ -16,15 +16,13 @@ struct LikeItem: View {
         
         Button(action: onToggle) {
             HStack {
-                Image(isLiked ? "customHeartFilled" : "customHeart")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 14)
+                Image(systemName: isLiked ? "heart.fill" : "heart")
+                    .font(.body)
                     .foregroundColor(isLiked ? .red : .primary)
                 
                 Text("\(likes)")
                     .font(.system(size: 14, weight: .semibold))
-                    .foregroundColor(.black)
+                    .foregroundColor(isLiked ? .red : .primary)
                     .monospacedDigit()
                     .contentTransition(.numericText(value: Double(likes)))
                     .transaction { t in

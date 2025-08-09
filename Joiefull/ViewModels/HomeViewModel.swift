@@ -12,6 +12,10 @@ class HomeViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var errorMessage: String?
     
+    init() {
+        loadProducts()
+    }
+    
     func loadProducts() {
         isLoading = true
         errorMessage = nil
