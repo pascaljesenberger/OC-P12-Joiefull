@@ -14,13 +14,15 @@ struct ProductInfo: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: ResponsiveSizes.fontSize(4, for: sizeCategory, device: device)) {
+            HStack {
             Text(product.name)
                 .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device), weight: .semibold))
                 .foregroundColor(.black)
                 .lineLimit(2)
                 .multilineTextAlignment(.leading)
             
-            HStack {
+                Spacer()
+                
                 Image(systemName: "star.fill")
                     .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device)))
                     .foregroundColor(.appOrange)
