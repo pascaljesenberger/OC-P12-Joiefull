@@ -27,7 +27,11 @@ struct HangerAnimation: View {
                 .onAppear {
                     angle = 20
                 }
+                .accessibilityLabel("Cintre qui se balance")
+                .accessibilityHint("Animation de chargement")
         }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Chargement des produits en cours")
     }
 }
 

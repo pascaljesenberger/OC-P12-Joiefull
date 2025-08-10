@@ -36,9 +36,11 @@ class ProductService {
                 print("No data received")
                 return completion(.failure(URLError(.badServerResponse)))
             }
-            
-            print("Data size: \(data.count) bytes")
-            
+
+            if let jsonString = String(data: data, encoding: .utf8) {
+                print("Raw JSON response:\n\(jsonString)")
+            }
+
             do {
                 let products = try JSONDecoder().decode([Product].self, from: data)
                 print("Decoded \(products.count) products")

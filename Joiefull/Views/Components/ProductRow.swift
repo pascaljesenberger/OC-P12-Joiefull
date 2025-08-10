@@ -19,6 +19,8 @@ struct ProductRow: View {
                 .font(.system(size: ResponsiveSizes.fontSize(22, for: sizeCategory, device: device), weight: .semibold))
                 .foregroundColor(.black)
                 .padding(.horizontal)
+                .accessibilityAddTraits(.isHeader)
+                .accessibilityLabel("Catégorie \(category.displayName)")
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: ResponsiveSizes.fontSize(8, for: sizeCategory, device: device)) {
@@ -28,6 +30,8 @@ struct ProductRow: View {
                 }
                 .padding(.horizontal)
             }
+            .accessibilityLabel("Liste des produits \(category.displayName)")
+            .accessibilityHint("Faites défiler horizontalement pour voir plus de produits")
         }
     }
 }

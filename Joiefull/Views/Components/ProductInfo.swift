@@ -15,28 +15,35 @@ struct ProductInfo: View {
     var body: some View {
         VStack(alignment: .leading, spacing: ResponsiveSizes.fontSize(4, for: sizeCategory, device: device)) {
             HStack {
-            Text(product.name)
-                .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device), weight: .semibold))
-                .foregroundColor(.black)
-                .lineLimit(2)
-                .multilineTextAlignment(.leading)
-            
+                Text(product.name)
+                    .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device), weight: .semibold))
+                    .foregroundColor(.black)
+                    .lineLimit(2)
+                    .multilineTextAlignment(.leading)
+                    .accessibilityLabel(product.name)
+                
                 Spacer()
                 
-                Image(systemName: "star.fill")
-                    .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device)))
-                    .foregroundColor(.appOrange)
-                
-                Text(product.rating)
-                    .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device)))
-                    .foregroundColor(.black)
-                    .monospacedDigit()
+                HStack(spacing: 2) {
+                    Image(systemName: "star.fill")
+                        .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device)))
+                        .foregroundColor(.appOrange)
+                        .accessibilityHidden(true)
+                    
+                    Text(product.rating)
+                        .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device)))
+                        .foregroundColor(.black)
+                        .monospacedDigit()
+                }
+                .accessibilityElement(children: .combine)
+                .accessibilityLabel("Note: \(product.rating) étoiles sur 5")
             }
             
             HStack {
                 Text(String(format: "%.2f €", product.price))
                     .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device)))
                     .foregroundColor(.black)
+                    .accessibilityLabel("Prix: \(String(format: "%.2f", product.price)) euros")
                 
                 Spacer()
                 
@@ -45,6 +52,7 @@ struct ProductInfo: View {
                         .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device)))
                         .strikethrough()
                         .foregroundColor(.black.opacity(0.7))
+                        .accessibilityLabel("Ancien prix: \(String(format: "%.2f", product.original_price)) euros")
                 }
             }
         }

@@ -26,11 +26,13 @@ struct ProductItem: View {
                 } placeholder: {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())
+                        .accessibilityLabel("Chargement de l'image")
                 }
                 .frame(height: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device))
                 .frame(maxWidth: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device))
                 .clipped()
                 .cornerRadius(ResponsiveSizes.imageSize(20, for: sizeCategory, device: device))
+                .accessibilityLabel(viewModel.product.picture.description)
                 
                 LikeItem(
                     likes: viewModel.currentLikes,
@@ -43,6 +45,8 @@ struct ProductItem: View {
             ProductInfo(product: viewModel.product)
         }
         .frame(width: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device))
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(viewModel.product.name), prix \(String(format: "%.2f", viewModel.product.price)) euros, note \(viewModel.product.rating) étoiles")
     }
 }
 

@@ -15,12 +15,15 @@ struct HomeView: View {
     var body: some View {
         if viewModel.isLoading {
             HangerAnimation()
+                .accessibilityLabel("Chargement des produits")
+                .accessibilityHint("Veuillez patienter")
         } else if let error = viewModel.errorMessage {
             Text(error)
                 .font(.system(size: ResponsiveSizes.fontSize(24, for: sizeCategory, device: device), weight: .semibold))
                 .foregroundColor(.black)
                 .multilineTextAlignment(.center)
                 .padding()
+                .accessibilityLabel("Erreur: \(error)")
         } else {
             ScrollView {
                 VStack(alignment: .leading, spacing: ResponsiveSizes.imageSize(24, for: sizeCategory, device: device)) {
@@ -33,6 +36,7 @@ struct HomeView: View {
                 }
                 .padding(.top)
             }
+            .accessibilityLabel("Liste des produits par catégorie")
         }
     }
 }
