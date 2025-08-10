@@ -11,43 +11,52 @@ struct ProductItem: View {
     @StateObject private var viewModel: ProductViewModel
     @Environment(\.sizeCategory) private var sizeCategory
     private let device = UIDevice.current
-    
+
     init(product: Product) {
         self._viewModel = StateObject(wrappedValue: ProductViewModel(product: product))
     }
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: ResponsiveSizes.fontSize(8, for: sizeCategory, device: device)) {
-            VStack(spacing: 0) {
+            ZStack(alignment: .bottomTrailing) {
                 AsyncImage(url: URL(string: viewModel.product.picture.url)) { image in
                     image
                         .resizable()
                         .scaledToFill()
+                        .frame(width: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device),
+                               height: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device))
+                        .clipped()
                 } placeholder: {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())
                         .accessibilityLabel("Chargement de l'image")
                 }
-                .frame(width: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device), height: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device))
-                .clipped()
                 .cornerRadius(ResponsiveSizes.imageSize(20, for: sizeCategory, device: device))
-                .accessibilityElement(children: .ignore)
-                .accessibilityLabel(viewModel.product.picture.description)
+                .accessibilityElement()
+                .accessibilityLabel("Image du produit : \(viewModel.product.picture.description)")
                 .accessibilityAddTraits(.isImage)
-                .overlay(
-                    LikeItem(
-                        likes: viewModel.currentLikes,
-                        isLiked: viewModel.isLiked,
-                        onToggle: viewModel.toggleLike
-                    )
-                    .padding(ResponsiveSizes.fontSize(8, for: sizeCategory, device: device)),
-                    alignment: .bottomTrailing
+                .contentShape(Rectangle())
+                .frame(width: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device),
+                       height: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device))
+                .clipped()
+                
+                LikeItem(
+                    likes: viewModel.currentLikes,
+                    isLiked: viewModel.isLiked,
+                    onToggle: viewModel.toggleLike
                 )
+                .padding(ResponsiveSizes.fontSize(8, for: sizeCategory, device: device))
             }
-            
+            .accessibilityElement(children: .contain)
+            .frame(width: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device),
+                   height: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device))
+            .clipped()
+
             ProductInfo(product: viewModel.product)
+                .accessibilityElement(children: .combine)
         }
         .frame(width: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device))
+        .accessibilityElement(children: .contain)
     }
 }
 

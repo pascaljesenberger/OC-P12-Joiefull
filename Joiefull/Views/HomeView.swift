@@ -17,13 +17,17 @@ struct HomeView: View {
             HangerAnimation()
                 .accessibilityLabel("Chargement des produits")
                 .accessibilityHint("Veuillez patienter")
+                .accessibilityAddTraits(.updatesFrequently)
         } else if let error = viewModel.errorMessage {
             Text(error)
                 .font(.system(size: ResponsiveSizes.fontSize(24, for: sizeCategory, device: device), weight: .semibold))
                 .foregroundColor(.black)
                 .multilineTextAlignment(.center)
                 .padding()
-                .accessibilityLabel("Erreur: \(error)")
+                .accessibilityElement(children: .combine)
+                .accessibilityLabel("Erreur")
+                .accessibilityValue(error)
+                .accessibilityAddTraits([.isStaticText, .playsSound])
         } else {
             ScrollView {
                 VStack(alignment: .leading, spacing: ResponsiveSizes.imageSize(24, for: sizeCategory, device: device)) {
@@ -37,6 +41,7 @@ struct HomeView: View {
                 .padding(.top)
             }
             .accessibilityLabel("Liste des produits par catégorie")
+            .accessibilityHint("Balayez vers le haut ou le bas pour naviguer entre les catégories")
         }
     }
 }

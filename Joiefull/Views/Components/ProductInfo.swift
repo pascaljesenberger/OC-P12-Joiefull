@@ -20,7 +20,6 @@ struct ProductInfo: View {
                     .foregroundColor(.black)
                     .lineLimit(2)
                     .multilineTextAlignment(.leading)
-                    .accessibilityAddTraits(.isHeader)
                 
                 Spacer()
                 
@@ -35,16 +34,12 @@ struct ProductInfo: View {
                         .foregroundColor(.black)
                         .monospacedDigit()
                 }
-                .accessibilityElement(children: .ignore)
-                .accessibilityLabel("Note: \(product.rating) sur 5 étoiles")
-                .accessibilityAddTraits(.updatesFrequently)
             }
             
             HStack {
                 Text(String(format: "%.2f €", product.price))
                     .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device)))
                     .foregroundColor(.black)
-                    .accessibilityLabel("Prix actuel: \(String(format: "%.2f", product.price)) euros")
                 
                 Spacer()
                 
@@ -53,20 +48,20 @@ struct ProductInfo: View {
                         .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device)))
                         .strikethrough()
                         .foregroundColor(.black.opacity(0.7))
-                        .accessibilityLabel("Prix barré: \(String(format: "%.2f", product.original_price)) euros")
                 }
             }
         }
         .padding(.horizontal)
         .frame(minHeight: ResponsiveSizes.imageSize(60, for: sizeCategory, device: device), alignment: .topLeading)
-        .accessibilityElement(children: .combine)
+        .accessibilityElement(children: .ignore)
         .accessibilityLabel(accessibilityDescription)
+        .accessibilityAddTraits(.isStaticText)
     }
     
     private var accessibilityDescription: String {
         let priceDescription = product.original_price > product.price
-            ? "Prix: \(String(format: "%.2f", product.price)) euros, prix barré: \(String(format: "%.2f", product.original_price)) euros"
-            : "Prix: \(String(format: "%.2f", product.price)) euros"
+            ? "Prix \(String(format: "%.2f", product.price)) euros, prix barré \(String(format: "%.2f", product.original_price)) euros"
+            : "Prix \(String(format: "%.2f", product.price)) euros"
         
         return "\(product.name), note \(product.rating) sur 5 étoiles, \(priceDescription)"
     }

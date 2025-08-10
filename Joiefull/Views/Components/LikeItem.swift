@@ -46,10 +46,16 @@ struct LikeItem: View {
             .clipShape(Capsule())
         }
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel(isLiked ? "Retirer des favoris" : "Ajouter aux favoris")
-        .accessibilityValue("\(likes) j'aime")
-        .accessibilityHint(isLiked ? "Double-touchez pour retirer ce produit de vos favoris" : "Double-touchez pour ajouter ce produit à vos favoris")
+        .accessibilityLabel(accessibilityDescription)
+        .accessibilityHint("Touchez deux fois pour ajouter aux favoris")
         .accessibilityAddTraits(.isButton)
+        .accessibilityAddTraits(isLiked ? .isSelected : [])
+    }
+    
+    private var accessibilityDescription: String {
+        let action = isLiked ? "Retirer des favoris" : "Ajouter aux favoris"
+        let likesText = likes == 0 ? "Aucun j'aime" : likes == 1 ? "1 j'aime" : "\(likes) j'aime"
+        return "\(action), \(likesText)"
     }
 }
 
