@@ -30,7 +30,6 @@ struct LikeItem: View {
                     .foregroundColor(isLiked ? .red : .primary)
                     .scaleEffect(animate ? 1.4 : 1)
                     .animation(.easeOut(duration: 0.1), value: animate)
-                    .accessibilityHidden(true)
                 
                 Text("\(likes)")
                     .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device), weight: .semibold))
@@ -40,16 +39,16 @@ struct LikeItem: View {
                     .transaction { t in
                         t.animation = .default
                     }
-                    .accessibilityHidden(true)
             }
             .padding(.horizontal, ResponsiveSizes.fontSize(8, for: sizeCategory, device: device))
             .padding(.vertical, ResponsiveSizes.fontSize(6, for: sizeCategory, device: device))
             .background(Color.white)
             .clipShape(Capsule())
         }
+        .accessibilityElement(children: .ignore)
         .accessibilityLabel(isLiked ? "Retirer des favoris" : "Ajouter aux favoris")
         .accessibilityValue("\(likes) j'aime")
-        .accessibilityHint(isLiked ? "Appuyez pour retirer ce produit de vos favoris" : "Appuyez pour ajouter ce produit à vos favoris")
+        .accessibilityHint(isLiked ? "Double-touchez pour retirer ce produit de vos favoris" : "Double-touchez pour ajouter ce produit à vos favoris")
         .accessibilityAddTraits(.isButton)
     }
 }

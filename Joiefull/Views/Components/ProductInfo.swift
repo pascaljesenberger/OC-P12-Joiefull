@@ -20,7 +20,7 @@ struct ProductInfo: View {
                     .foregroundColor(.black)
                     .lineLimit(2)
                     .multilineTextAlignment(.leading)
-                    .accessibilityLabel(product.name)
+                    .accessibilityAddTraits(.isHeader)
                 
                 Spacer()
                 
@@ -35,15 +35,16 @@ struct ProductInfo: View {
                         .foregroundColor(.black)
                         .monospacedDigit()
                 }
-                .accessibilityElement(children: .combine)
-                .accessibilityLabel("Note: \(product.rating) étoiles sur 5")
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel("Note: \(product.rating) sur 5 étoiles")
+                .accessibilityAddTraits(.updatesFrequently)
             }
             
             HStack {
                 Text(String(format: "%.2f €", product.price))
                     .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device)))
                     .foregroundColor(.black)
-                    .accessibilityLabel("Prix: \(String(format: "%.2f", product.price)) euros")
+                    .accessibilityLabel("Prix actuel: \(String(format: "%.2f", product.price)) euros")
                 
                 Spacer()
                 
@@ -52,12 +53,22 @@ struct ProductInfo: View {
                         .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device)))
                         .strikethrough()
                         .foregroundColor(.black.opacity(0.7))
-                        .accessibilityLabel("Ancien prix: \(String(format: "%.2f", product.original_price)) euros")
+                        .accessibilityLabel("Prix barré: \(String(format: "%.2f", product.original_price)) euros")
                 }
             }
         }
         .padding(.horizontal)
         .frame(minHeight: ResponsiveSizes.imageSize(60, for: sizeCategory, device: device), alignment: .topLeading)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(accessibilityDescription)
+    }
+    
+    private var accessibilityDescription: String {
+        let priceDescription = product.original_price > product.price
+            ? "Prix: \(String(format: "%.2f", product.price)) euros, prix barré: \(String(format: "%.2f", product.original_price)) euros"
+            : "Prix: \(String(format: "%.2f", product.price)) euros"
+        
+        return "\(product.name), note \(product.rating) sur 5 étoiles, \(priceDescription)"
     }
 }
 

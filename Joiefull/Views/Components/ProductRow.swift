@@ -20,7 +20,7 @@ struct ProductRow: View {
                 .foregroundColor(.black)
                 .padding(.horizontal)
                 .accessibilityAddTraits(.isHeader)
-                .accessibilityLabel("Catégorie \(category.displayName)")
+                .accessibilityLabel("Catégorie \(category.displayName), \(products.count) produit\(products.count > 1 ? "s" : "")")
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: ResponsiveSizes.fontSize(8, for: sizeCategory, device: device)) {
@@ -30,8 +30,8 @@ struct ProductRow: View {
                 }
                 .padding(.horizontal)
             }
-            .accessibilityLabel("Liste des produits \(category.displayName)")
-            .accessibilityHint("Faites défiler horizontalement pour voir plus de produits")
+            .accessibilityLabel("Liste horizontale des produits \(category.displayName)")
+            .accessibilityHint("Balayez vers la droite ou la gauche pour naviguer entre les produits")
         }
     }
 }

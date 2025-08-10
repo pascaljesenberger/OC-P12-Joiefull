@@ -302,11 +302,11 @@
 				};
 			};
 			buildConfigurationList = C6CCB9442E3F83B700AC10A2 /* Build configuration list for PBXProject "Joiefull" */;
-			developmentRegion = en;
+			developmentRegion = fr;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				fr,
 			);
 			mainGroup = C6CCB9402E3F83B700AC10A2;
 			minimizedProjectReferenceProxies = 1;

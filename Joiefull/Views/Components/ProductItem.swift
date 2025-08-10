@@ -18,7 +18,7 @@ struct ProductItem: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: ResponsiveSizes.fontSize(8, for: sizeCategory, device: device)) {
-            ZStack(alignment: .bottomTrailing) {
+            VStack(spacing: 0) {
                 AsyncImage(url: URL(string: viewModel.product.picture.url)) { image in
                     image
                         .resizable()
@@ -28,25 +28,26 @@ struct ProductItem: View {
                         .progressViewStyle(CircularProgressViewStyle())
                         .accessibilityLabel("Chargement de l'image")
                 }
-                .frame(height: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device))
-                .frame(maxWidth: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device))
+                .frame(width: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device), height: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device))
                 .clipped()
                 .cornerRadius(ResponsiveSizes.imageSize(20, for: sizeCategory, device: device))
+                .accessibilityElement(children: .ignore)
                 .accessibilityLabel(viewModel.product.picture.description)
-                
-                LikeItem(
-                    likes: viewModel.currentLikes,
-                    isLiked: viewModel.isLiked,
-                    onToggle: viewModel.toggleLike
+                .accessibilityAddTraits(.isImage)
+                .overlay(
+                    LikeItem(
+                        likes: viewModel.currentLikes,
+                        isLiked: viewModel.isLiked,
+                        onToggle: viewModel.toggleLike
+                    )
+                    .padding(ResponsiveSizes.fontSize(8, for: sizeCategory, device: device)),
+                    alignment: .bottomTrailing
                 )
-                .padding(ResponsiveSizes.fontSize(8, for: sizeCategory, device: device))
             }
             
             ProductInfo(product: viewModel.product)
         }
         .frame(width: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device))
-        .accessibilityElement(children: .combine)
-        .accessibilityLabel("\(viewModel.product.name), prix \(String(format: "%.2f", viewModel.product.price)) euros, note \(viewModel.product.rating) étoiles")
     }
 }
 
