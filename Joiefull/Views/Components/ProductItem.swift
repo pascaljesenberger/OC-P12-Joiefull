@@ -11,25 +11,27 @@ struct ProductItem: View {
     @StateObject private var viewModel: ProductViewModel
     @Environment(\.sizeCategory) private var sizeCategory
     private let device = UIDevice.current
-
+    
     init(product: Product) {
         self._viewModel = StateObject(wrappedValue: ProductViewModel(product: product))
     }
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: ResponsiveSizes.fontSize(8, for: sizeCategory, device: device)) {
             ZStack(alignment: .bottomTrailing) {
-                AsyncImage(url: URL(string: viewModel.product.picture.url)) { image in
-                    image
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device),
-                               height: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device))
-                        .clipped()
-                } placeholder: {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle())
-                        .accessibilityLabel("Chargement de l'image")
+                NavigationLink(destination: ProductDetailView(product: viewModel.product)) {
+                    AsyncImage(url: URL(string: viewModel.product.picture.url)) { image in
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device),
+                                   height: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device))
+                            .clipped()
+                    } placeholder: {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                            .accessibilityLabel("Chargement de l'image")
+                    }
                 }
                 .cornerRadius(ResponsiveSizes.imageSize(20, for: sizeCategory, device: device))
                 .accessibilityElement()
@@ -51,7 +53,7 @@ struct ProductItem: View {
             .frame(width: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device),
                    height: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device))
             .clipped()
-
+            
             ProductInfo(product: viewModel.product)
                 .accessibilityElement(children: .combine)
         }

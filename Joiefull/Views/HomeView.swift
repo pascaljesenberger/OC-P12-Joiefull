@@ -13,35 +13,37 @@ struct HomeView: View {
     private let device = UIDevice.current
     
     var body: some View {
-        if viewModel.isLoading {
-            HangerAnimation()
-                .accessibilityLabel("Chargement des produits")
-                .accessibilityHint("Veuillez patienter")
-                .accessibilityAddTraits(.updatesFrequently)
-        } else if let error = viewModel.errorMessage {
-            Text(error)
-                .font(.system(size: ResponsiveSizes.fontSize(24, for: sizeCategory, device: device), weight: .semibold))
-                .foregroundColor(.black)
-                .multilineTextAlignment(.center)
-                .padding()
-                .accessibilityElement(children: .combine)
-                .accessibilityLabel("Erreur")
-                .accessibilityValue(error)
-                .accessibilityAddTraits([.isStaticText, .playsSound])
-        } else {
-            ScrollView {
-                VStack(alignment: .leading, spacing: ResponsiveSizes.imageSize(24, for: sizeCategory, device: device)) {
-                    ForEach(Category.allCases, id: \.self) { category in
-                        let filtered = viewModel.products(for: category)
-                        if !filtered.isEmpty {
-                            ProductRow(category: category, products: filtered)
+        NavigationStack {
+            if viewModel.isLoading {
+                HangerAnimation()
+                    .accessibilityLabel("Chargement des produits")
+                    .accessibilityHint("Veuillez patienter")
+                    .accessibilityAddTraits(.updatesFrequently)
+            } else if let error = viewModel.errorMessage {
+                Text(error)
+                    .font(.system(size: ResponsiveSizes.fontSize(24, for: sizeCategory, device: device), weight: .semibold))
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.center)
+                    .padding()
+                    .accessibilityElement(children: .combine)
+                    .accessibilityLabel("Erreur")
+                    .accessibilityValue(error)
+                    .accessibilityAddTraits([.isStaticText, .playsSound])
+            } else {
+                ScrollView {
+                    VStack(alignment: .leading, spacing: ResponsiveSizes.imageSize(24, for: sizeCategory, device: device)) {
+                        ForEach(Category.allCases, id: \.self) { category in
+                            let filtered = viewModel.products(for: category)
+                            if !filtered.isEmpty {
+                                ProductRow(category: category, products: filtered)
+                            }
                         }
                     }
+                    .padding(.top)
                 }
-                .padding(.top)
+                .accessibilityLabel("Liste des produits par catégorie")
+                .accessibilityHint("Balayez vers le haut ou le bas pour naviguer entre les catégories")
             }
-            .accessibilityLabel("Liste des produits par catégorie")
-            .accessibilityHint("Balayez vers le haut ou le bas pour naviguer entre les catégories")
         }
     }
 }
