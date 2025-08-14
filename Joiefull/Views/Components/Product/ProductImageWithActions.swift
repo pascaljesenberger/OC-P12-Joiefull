@@ -37,7 +37,7 @@ struct ProductImageWithActions: View {
                 )
             }
             
-            VStack {
+            VStack(alignment: .trailing) {
                 if showShareButton {
                     ShareButton(product: product)
                         .padding(ResponsiveSizes.fontSize(8, for: sizeCategory, device: device))
