@@ -15,41 +15,25 @@ struct ProductImageLike: View {
     let sizeCategory: ContentSizeCategory
     let device: UIDevice
     let imageSize: CGFloat?
+    let isNavigationEnabled: Bool
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
-            NavigationLink(destination: ProductDetailView(product: product)) {
-                AsyncImage(url: URL(string: product.picture.url)) { image in
-                    image
-                        .resizable()
-                        .scaledToFill()
-                        .frame(
-                            width: imageSize != nil ? ResponsiveSizes.imageSize(imageSize!, for: sizeCategory, device: device) : nil,
-                            height: imageSize != nil ? ResponsiveSizes.imageSize(imageSize!, for: sizeCategory, device: device) : nil
-                        )
-                        .frame(maxWidth: .infinity)
-                        .clipped()
-                } placeholder: {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: ResponsiveSizes.imageSize(20, for: sizeCategory, device: device))
-                            .fill(Color.gray.opacity(0.3))
-                            .frame(
-                                width: imageSize != nil ? ResponsiveSizes.imageSize(imageSize!, for: sizeCategory, device: device) : nil,
-                                height: imageSize != nil ? ResponsiveSizes.imageSize(imageSize!, for: sizeCategory, device: device) : nil
-                            )
-                        ProgressView()
-                            .progressViewStyle(CircularProgressViewStyle())
-                            .accessibilityLabel("Chargement de l'image")
-                    }
-                    .frame(maxWidth: .infinity)
-                }
+            if isNavigationEnabled {
+                NavigableProductImage(
+                    product: product,
+                    sizeCategory: sizeCategory,
+                    device: device,
+                    imageSize: imageSize
+                )
+            } else {
+                ProductImage(
+                    product: product,
+                    sizeCategory: sizeCategory,
+                    device: device,
+                    imageSize: imageSize
+                )
             }
-            .cornerRadius(ResponsiveSizes.imageSize(20, for: sizeCategory, device: device))
-            .accessibilityElement()
-            .accessibilityLabel("Image du produit : \(product.picture.description)")
-            .accessibilityAddTraits(.isImage)
-            .contentShape(Rectangle())
-            .clipped()
             
             LikeButton(
                 likes: currentLikes,
@@ -64,13 +48,27 @@ struct ProductImageLike: View {
 }
 
 #Preview {
-    ProductImageLike(
-        product: .preview,
-        currentLikes: 12,
-        isLiked: false,
-        toggleLike: {},
-        sizeCategory: .medium,
-        device: UIDevice.current,
-        imageSize: 198
-    )
+    VStack(spacing: 20) {
+        ProductImageLike(
+            product: .preview,
+            currentLikes: 12,
+            isLiked: false,
+            toggleLike: {},
+            sizeCategory: .medium,
+            device: UIDevice.current,
+            imageSize: 198,
+            isNavigationEnabled: true
+        )
+        
+        ProductImageLike(
+            product: .preview,
+            currentLikes: 8,
+            isLiked: true,
+            toggleLike: {},
+            sizeCategory: .medium,
+            device: UIDevice.current,
+            imageSize: 198,
+            isNavigationEnabled: false
+        )
+    }
 }

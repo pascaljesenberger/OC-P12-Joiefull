@@ -28,7 +28,8 @@ struct ProductDetailView: View {
                     toggleLike: viewModel.toggleLike,
                     sizeCategory: sizeCategory,
                     device: device,
-                    imageSize: nil
+                    imageSize: nil,
+                    isNavigationEnabled: false
                 )
                 
                 ProductInfo(product: product, showDescription: true)

@@ -25,7 +25,8 @@ struct ProductItem: View {
                 toggleLike: viewModel.toggleLike,
                 sizeCategory: sizeCategory,
                 device: device,
-                imageSize: 198
+                imageSize: 198,
+                isNavigationEnabled: true
             )
             
             ProductInfo(product: viewModel.product, showDescription: false)
