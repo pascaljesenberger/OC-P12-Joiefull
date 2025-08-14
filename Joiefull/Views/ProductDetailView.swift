@@ -20,7 +20,7 @@ struct ProductDetailView: View {
     
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(spacing: 24) {
                 ProductImageLike(
                     product: product,
                     currentLikes: viewModel.currentLikes,
@@ -31,11 +31,7 @@ struct ProductDetailView: View {
                     imageSize: nil
                 )
                 
-                ProductInfo(product: product)
-                
-                Text(product.picture.description)
-                    .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device), weight: .semibold))
-                    .foregroundColor(.black)
+                ProductInfo(product: product, showDescription: true)
             }
         }
         .padding(.horizontal)

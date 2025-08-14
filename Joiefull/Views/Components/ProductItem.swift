@@ -28,7 +28,7 @@ struct ProductItem: View {
                 imageSize: 198
             )
             
-            ProductInfo(product: viewModel.product)
+            ProductInfo(product: viewModel.product, showDescription: false)
                 .accessibilityElement(children: .combine)
         }
         .frame(width: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device))

@@ -11,9 +11,10 @@ struct ProductInfo: View {
     let product: Product
     @Environment(\.sizeCategory) private var sizeCategory
     private let device = UIDevice.current
+    let showDescription: Bool
     
     var body: some View {
-        VStack(alignment: .leading, spacing: ResponsiveSizes.fontSize(4, for: sizeCategory, device: device)) {
+        VStack(alignment: .leading, spacing: ResponsiveSizes.fontSize(8, for: sizeCategory, device: device)) {
             HStack {
                 Text(product.name)
                     .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device), weight: .semibold))
@@ -50,6 +51,12 @@ struct ProductInfo: View {
                         .foregroundColor(.black.opacity(0.7))
                 }
             }
+            
+            if showDescription {
+                Text(product.picture.description)
+                    .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device)))
+                    .foregroundColor(.black)
+            }
         }
         .padding(.horizontal)
         .frame(minHeight: ResponsiveSizes.imageSize(60, for: sizeCategory, device: device), alignment: .topLeading)
@@ -68,5 +75,5 @@ struct ProductInfo: View {
 }
 
 #Preview {
-    ProductInfo(product: .preview)
-}  
+    ProductInfo(product: .preview, showDescription: true)
+}
