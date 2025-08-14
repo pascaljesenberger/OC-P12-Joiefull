@@ -24,6 +24,12 @@ struct HangerAnimation: View {
                         .repeatForever(autoreverses: true),
                     value: angle
                 )
+                .padding(.bottom, 60)
+            
+            Text("Chargement des produits en cours...")
+                .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device)))
+                .foregroundColor(.black)
+            
                 .onAppear {
                     angle = 20
                 }
