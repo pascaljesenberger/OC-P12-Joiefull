@@ -12,6 +12,15 @@ struct ProductRow: View {
     let products: [Product]
     @Environment(\.sizeCategory) private var sizeCategory
     private let device = UIDevice.current
+    let imageSize: CGFloat?
+    let isNavigationEnabled: Bool
+    
+    init(category: Category, products: [Product], imageSize: CGFloat? = 198, isNavigationEnabled: Bool = true) {
+        self.category = category
+        self.products = products
+        self.imageSize = imageSize
+        self.isNavigationEnabled = isNavigationEnabled
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -25,7 +34,12 @@ struct ProductRow: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: ResponsiveSizes.fontSize(8, for: sizeCategory, device: device)) {
                     ForEach(products) { product in
-                        ProductItem(product: product)
+                        ProductItem(
+                            product: product,
+                            showDescription: false,
+                            imageSize: imageSize,
+                            isNavigationEnabled: isNavigationEnabled
+                        )
                     }
                 }
                 .padding(.horizontal)
@@ -37,5 +51,5 @@ struct ProductRow: View {
 }
 
 #Preview {
-    ProductRow(category: .accessories, products: [.preview])
+    ProductRow(category: .accessories, products: [.preview], imageSize: nil, isNavigationEnabled: false)
 }

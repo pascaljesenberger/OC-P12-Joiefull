@@ -21,20 +21,18 @@ struct ProductDetailView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 24) {
-                ProductImageLike(
+                ProductItem(
                     product: product,
-                    currentLikes: viewModel.currentLikes,
-                    isLiked: viewModel.isLiked,
-                    toggleLike: viewModel.toggleLike,
-                    sizeCategory: sizeCategory,
-                    device: device,
+                    showDescription: true,
                     imageSize: nil,
                     isNavigationEnabled: false
                 )
-                
-                ProductInfo(product: product, showDescription: true)
             }
         }
         .padding(.horizontal)
     }
+}
+
+#Preview {
+    ProductDetailView(product: .preview)
 }
