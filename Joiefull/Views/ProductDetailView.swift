@@ -26,7 +26,8 @@ struct ProductDetailView: View {
                     showDescription: true,
                     imageSize: nil,
                     isNavigationEnabled: false,
-                    showShareButton: true
+                    showShareButton: true,
+                    isDetailView: true
                 )
             }
         }

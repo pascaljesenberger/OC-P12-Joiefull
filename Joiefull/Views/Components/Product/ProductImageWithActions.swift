@@ -17,6 +17,7 @@ struct ProductImageWithActions: View {
     let imageSize: CGFloat?
     let isNavigationEnabled: Bool
     let showShareButton: Bool
+    let isDetailView: Bool
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -47,7 +48,8 @@ struct ProductImageWithActions: View {
                 LikeButton(
                     likes: currentLikes,
                     isLiked: isLiked,
-                    onToggle: toggleLike
+                    onToggle: toggleLike,
+                    isDetailView: isDetailView
                 )
                 .padding(ResponsiveSizes.fontSize(8, for: sizeCategory, device: device))
             }
@@ -58,29 +60,18 @@ struct ProductImageWithActions: View {
 }
 
 #Preview {
-    VStack(spacing: 20) {
+    VStack {
         ProductImageWithActions(
             product: .preview,
             currentLikes: 12,
             isLiked: false,
             toggleLike: {},
-            sizeCategory: .medium,
+            sizeCategory: .small,
             device: UIDevice.current,
-            imageSize: 198,
+            imageSize: nil,
             isNavigationEnabled: true,
-            showShareButton: true
-        )
-        
-        ProductImageWithActions(
-            product: .preview,
-            currentLikes: 8,
-            isLiked: true,
-            toggleLike: {},
-            sizeCategory: .medium,
-            device: UIDevice.current,
-            imageSize: 198,
-            isNavigationEnabled: false,
-            showShareButton: false
+            showShareButton: true,
+            isDetailView: true
         )
     }
 }
