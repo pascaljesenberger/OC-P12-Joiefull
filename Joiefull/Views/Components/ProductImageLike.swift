@@ -30,11 +30,18 @@ struct ProductImageLike: View {
                         .frame(maxWidth: .infinity)
                         .clipped()
                 } placeholder: {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle())
-                        .frame(height: imageSize != nil ? ResponsiveSizes.imageSize(imageSize!, for: sizeCategory, device: device) : nil)
-                        .frame(maxWidth: .infinity)
-                        .accessibilityLabel("Chargement de l'image")
+                    ZStack {
+                        RoundedRectangle(cornerRadius: ResponsiveSizes.imageSize(20, for: sizeCategory, device: device))
+                            .fill(Color.gray.opacity(0.3))
+                            .frame(
+                                width: imageSize != nil ? ResponsiveSizes.imageSize(imageSize!, for: sizeCategory, device: device) : nil,
+                                height: imageSize != nil ? ResponsiveSizes.imageSize(imageSize!, for: sizeCategory, device: device) : nil
+                            )
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                            .accessibilityLabel("Chargement de l'image")
+                    }
+                    .frame(maxWidth: .infinity)
                 }
             }
             .cornerRadius(ResponsiveSizes.imageSize(20, for: sizeCategory, device: device))
