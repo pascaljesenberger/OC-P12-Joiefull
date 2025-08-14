@@ -44,7 +44,7 @@ struct ProductImageLike: View {
             .contentShape(Rectangle())
             .clipped()
             
-            LikeItem(
+            LikeButton(
                 likes: currentLikes,
                 isLiked: isLiked,
                 onToggle: toggleLike

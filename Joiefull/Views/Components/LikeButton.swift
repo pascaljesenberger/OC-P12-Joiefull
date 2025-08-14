@@ -1,5 +1,5 @@
 //
-//  LikeItem.swift
+//  LikeButton.swift
 //  Joiefull
 //
 //  Created by Pascal Jesenberger on 03/08/2025.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LikeItem: View {
+struct LikeButton: View {
     let likes: Int
     let isLiked: Bool
     let onToggle: () -> Void
@@ -61,8 +61,8 @@ struct LikeItem: View {
 
 #Preview {
     VStack(spacing: 20) {
-        LikeItem(likes: 42, isLiked: false, onToggle: {})
-        LikeItem(likes: 43, isLiked: true, onToggle: {})
+        LikeButton(likes: 42, isLiked: false, onToggle: {})
+        LikeButton(likes: 43, isLiked: true, onToggle: {})
     }
     .background(Color.black)
 }
