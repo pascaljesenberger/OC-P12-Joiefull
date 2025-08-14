@@ -18,41 +18,14 @@ struct ProductItem: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: ResponsiveSizes.fontSize(8, for: sizeCategory, device: device)) {
-            ZStack(alignment: .bottomTrailing) {
-                NavigationLink(destination: ProductDetailView(product: viewModel.product)) {
-                    AsyncImage(url: URL(string: viewModel.product.picture.url)) { image in
-                        image
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device),
-                                   height: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device))
-                            .clipped()
-                    } placeholder: {
-                        ProgressView()
-                            .progressViewStyle(CircularProgressViewStyle())
-                            .accessibilityLabel("Chargement de l'image")
-                    }
-                }
-                .cornerRadius(ResponsiveSizes.imageSize(20, for: sizeCategory, device: device))
-                .accessibilityElement()
-                .accessibilityLabel("Image du produit : \(viewModel.product.picture.description)")
-                .accessibilityAddTraits(.isImage)
-                .contentShape(Rectangle())
-                .frame(width: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device),
-                       height: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device))
-                .clipped()
-                
-                LikeItem(
-                    likes: viewModel.currentLikes,
-                    isLiked: viewModel.isLiked,
-                    onToggle: viewModel.toggleLike
-                )
-                .padding(ResponsiveSizes.fontSize(8, for: sizeCategory, device: device))
-            }
-            .accessibilityElement(children: .contain)
-            .frame(width: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device),
-                   height: ResponsiveSizes.imageSize(198, for: sizeCategory, device: device))
-            .clipped()
+            ProductImageLike(
+                product: viewModel.product,
+                currentLikes: viewModel.currentLikes,
+                isLiked: viewModel.isLiked,
+                toggleLike: viewModel.toggleLike,
+                sizeCategory: sizeCategory,
+                device: device
+            )
             
             ProductInfo(product: viewModel.product)
                 .accessibilityElement(children: .combine)
