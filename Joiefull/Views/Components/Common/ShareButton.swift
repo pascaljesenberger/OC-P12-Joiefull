@@ -18,6 +18,10 @@ struct ShareButton: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: ResponsiveSizes.imageSize(18, for: sizeCategory, device: device))
+                .padding(10)
+                .background(Color.white)
+                .clipShape(Circle())
+                .contentShape(Circle())
         }
     }
 }

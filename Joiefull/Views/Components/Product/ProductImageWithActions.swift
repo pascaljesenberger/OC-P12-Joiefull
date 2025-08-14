@@ -38,7 +38,9 @@ struct ProductImageWithActions: View {
             VStack {
                 ShareButton(product: product)
                     .padding(ResponsiveSizes.fontSize(8, for: sizeCategory, device: device))
+                
                 Spacer()
+                
                 LikeButton(
                     likes: currentLikes,
                     isLiked: isLiked,
