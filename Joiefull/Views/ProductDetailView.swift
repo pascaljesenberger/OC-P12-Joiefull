@@ -26,7 +26,8 @@ struct ProductDetailView: View {
                 isLiked: viewModel.isLiked,
                 toggleLike: viewModel.toggleLike,
                 sizeCategory: sizeCategory,
-                device: device
+                device: device,
+                imageSize: 396
             )
             
             ProductInfo(product: product)
