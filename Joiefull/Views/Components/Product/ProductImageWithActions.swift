@@ -1,5 +1,5 @@
 //
-//  ProductImageLike.swift
+//  ProductImageWithActions.swift
 //  Joiefull
 //
 //  Created by Pascal Jesenberger on 14/08/2025.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProductImageLike: View {
+struct ProductImageWithActions: View {
     let product: Product
     let currentLikes: Int
     let isLiked: Bool
@@ -35,12 +35,17 @@ struct ProductImageLike: View {
                 )
             }
             
-            LikeButton(
-                likes: currentLikes,
-                isLiked: isLiked,
-                onToggle: toggleLike
-            )
-            .padding(ResponsiveSizes.fontSize(8, for: sizeCategory, device: device))
+            VStack {
+                ShareButton(product: product)
+                    .padding(ResponsiveSizes.fontSize(8, for: sizeCategory, device: device))
+                Spacer()
+                LikeButton(
+                    likes: currentLikes,
+                    isLiked: isLiked,
+                    onToggle: toggleLike
+                )
+                .padding(ResponsiveSizes.fontSize(8, for: sizeCategory, device: device))
+            }
         }
         .accessibilityElement(children: .contain)
         .clipped()
@@ -49,7 +54,7 @@ struct ProductImageLike: View {
 
 #Preview {
     VStack(spacing: 20) {
-        ProductImageLike(
+        ProductImageWithActions(
             product: .preview,
             currentLikes: 12,
             isLiked: false,
@@ -60,7 +65,7 @@ struct ProductImageLike: View {
             isNavigationEnabled: true
         )
         
-        ProductImageLike(
+        ProductImageWithActions(
             product: .preview,
             currentLikes: 8,
             isLiked: true,

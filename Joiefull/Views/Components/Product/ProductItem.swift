@@ -24,7 +24,7 @@ struct ProductItem: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: ResponsiveSizes.fontSize(8, for: sizeCategory, device: device)) {
-            ProductImageLike(
+            ProductImageWithActions(
                 product: viewModel.product,
                 currentLikes: viewModel.currentLikes,
                 isLiked: viewModel.isLiked,

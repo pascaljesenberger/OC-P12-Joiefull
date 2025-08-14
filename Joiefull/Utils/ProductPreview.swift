@@ -12,7 +12,7 @@ extension Product {
         Product(
             id: 1,
             picture: Picture(
-                url: "",
+                url: "https://raw.githubusercontent.com/OpenClassrooms-Student-Center/Cr-ez-une-interface-dynamique-et-accessible-avec-SwiftUI/main/img/bottoms/2.jpg",
                 description: "Exemple de produit"
             ),
             name: "Pendentif bleu pour femme",
