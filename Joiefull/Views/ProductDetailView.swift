@@ -20,12 +20,13 @@ struct ProductDetailView: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 24) {
+            VStack {
                 ProductItem(
                     product: product,
                     showDescription: true,
                     imageSize: nil,
-                    isNavigationEnabled: false
+                    isNavigationEnabled: false,
+                    showShareButton: true
                 )
             }
         }

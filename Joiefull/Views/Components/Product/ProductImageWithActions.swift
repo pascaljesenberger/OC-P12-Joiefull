@@ -16,6 +16,7 @@ struct ProductImageWithActions: View {
     let device: UIDevice
     let imageSize: CGFloat?
     let isNavigationEnabled: Bool
+    let showShareButton: Bool
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -36,8 +37,10 @@ struct ProductImageWithActions: View {
             }
             
             VStack {
-                ShareButton(product: product)
-                    .padding(ResponsiveSizes.fontSize(8, for: sizeCategory, device: device))
+                if showShareButton {
+                    ShareButton(product: product)
+                        .padding(ResponsiveSizes.fontSize(8, for: sizeCategory, device: device))
+                }
                 
                 Spacer()
                 
@@ -64,7 +67,8 @@ struct ProductImageWithActions: View {
             sizeCategory: .medium,
             device: UIDevice.current,
             imageSize: 198,
-            isNavigationEnabled: true
+            isNavigationEnabled: true,
+            showShareButton: true
         )
         
         ProductImageWithActions(
@@ -75,7 +79,8 @@ struct ProductImageWithActions: View {
             sizeCategory: .medium,
             device: UIDevice.current,
             imageSize: 198,
-            isNavigationEnabled: false
+            isNavigationEnabled: false,
+            showShareButton: false
         )
     }
 }

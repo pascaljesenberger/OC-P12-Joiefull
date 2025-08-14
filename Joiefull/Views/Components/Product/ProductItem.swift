@@ -14,12 +14,14 @@ struct ProductItem: View {
     let showDescription: Bool
     let imageSize: CGFloat?
     let isNavigationEnabled: Bool
+    let showShareButton: Bool
     
-    init(product: Product, showDescription: Bool = true, imageSize: CGFloat? = 198, isNavigationEnabled: Bool = true) {
+    init(product: Product, showDescription: Bool = true, imageSize: CGFloat? = 198, isNavigationEnabled: Bool = true, showShareButton: Bool = false) {
         self._viewModel = StateObject(wrappedValue: ProductViewModel(product: product))
         self.showDescription = showDescription
         self.imageSize = imageSize
         self.isNavigationEnabled = isNavigationEnabled
+        self.showShareButton = showShareButton
     }
     
     var body: some View {
@@ -32,7 +34,8 @@ struct ProductItem: View {
                 sizeCategory: sizeCategory,
                 device: device,
                 imageSize: imageSize,
-                isNavigationEnabled: isNavigationEnabled
+                isNavigationEnabled: isNavigationEnabled,
+                showShareButton: showShareButton
             )
             
             ProductInfo(product: viewModel.product, showDescription: showDescription)
