@@ -14,7 +14,7 @@ struct ProductImageLike: View {
     let toggleLike: () -> Void
     let sizeCategory: ContentSizeCategory
     let device: UIDevice
-    let imageSize: CGFloat
+    let imageSize: CGFloat?
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -23,12 +23,17 @@ struct ProductImageLike: View {
                     image
                         .resizable()
                         .scaledToFill()
-                        .frame(width: ResponsiveSizes.imageSize(imageSize, for: sizeCategory, device: device),
-                               height: ResponsiveSizes.imageSize(imageSize, for: sizeCategory, device: device))
+                        .frame(
+                            width: imageSize != nil ? ResponsiveSizes.imageSize(imageSize!, for: sizeCategory, device: device) : nil,
+                            height: imageSize != nil ? ResponsiveSizes.imageSize(imageSize!, for: sizeCategory, device: device) : nil
+                        )
+                        .frame(maxWidth: .infinity)
                         .clipped()
                 } placeholder: {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())
+                        .frame(height: imageSize != nil ? ResponsiveSizes.imageSize(imageSize!, for: sizeCategory, device: device) : nil)
+                        .frame(maxWidth: .infinity)
                         .accessibilityLabel("Chargement de l'image")
                 }
             }
@@ -37,8 +42,6 @@ struct ProductImageLike: View {
             .accessibilityLabel("Image du produit : \(product.picture.description)")
             .accessibilityAddTraits(.isImage)
             .contentShape(Rectangle())
-            .frame(width: ResponsiveSizes.imageSize(imageSize, for: sizeCategory, device: device),
-                   height: ResponsiveSizes.imageSize(imageSize, for: sizeCategory, device: device))
             .clipped()
             
             LikeItem(
@@ -49,8 +52,6 @@ struct ProductImageLike: View {
             .padding(ResponsiveSizes.fontSize(8, for: sizeCategory, device: device))
         }
         .accessibilityElement(children: .contain)
-        .frame(width: ResponsiveSizes.imageSize(imageSize, for: sizeCategory, device: device),
-               height: ResponsiveSizes.imageSize(imageSize, for: sizeCategory, device: device))
         .clipped()
     }
 }

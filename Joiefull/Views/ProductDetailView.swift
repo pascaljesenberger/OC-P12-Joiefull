@@ -19,22 +19,25 @@ struct ProductDetailView: View {
     }
     
     var body: some View {
-        VStack {
-            ProductImageLike(
-                product: product,
-                currentLikes: viewModel.currentLikes,
-                isLiked: viewModel.isLiked,
-                toggleLike: viewModel.toggleLike,
-                sizeCategory: sizeCategory,
-                device: device,
-                imageSize: 396
-            )
-            
-            ProductInfo(product: product)
-            
-            Text(product.picture.description)
-                .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device), weight: .semibold))
-                .foregroundColor(.black)
+        ScrollView {
+            VStack {
+                ProductImageLike(
+                    product: product,
+                    currentLikes: viewModel.currentLikes,
+                    isLiked: viewModel.isLiked,
+                    toggleLike: viewModel.toggleLike,
+                    sizeCategory: sizeCategory,
+                    device: device,
+                    imageSize: nil
+                )
+                
+                ProductInfo(product: product)
+                
+                Text(product.picture.description)
+                    .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device), weight: .semibold))
+                    .foregroundColor(.black)
+            }
         }
+        .padding(.horizontal)
     }
 }
