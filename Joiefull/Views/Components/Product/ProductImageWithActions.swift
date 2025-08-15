@@ -18,6 +18,7 @@ struct ProductImageWithActions: View {
     let isNavigationEnabled: Bool
     let showShareButton: Bool
     let isDetailView: Bool
+    @State private var imageLoaded = false
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -26,32 +27,36 @@ struct ProductImageWithActions: View {
                     product: product,
                     sizeCategory: sizeCategory,
                     device: device,
-                    imageSize: imageSize
+                    imageSize: imageSize,
+                    imageLoaded: $imageLoaded
                 )
             } else {
                 ProductImage(
                     product: product,
                     sizeCategory: sizeCategory,
                     device: device,
-                    imageSize: imageSize
+                    imageSize: imageSize,
+                    imageLoaded: $imageLoaded
                 )
             }
             
-            VStack(alignment: .trailing) {
-                if showShareButton {
-                    ShareButton(product: product)
-                        .padding(ResponsiveSizes.fontSize(8, for: sizeCategory, device: device))
+            if imageLoaded {
+                VStack(alignment: .trailing) {
+                    if showShareButton {
+                        ShareButton(product: product)
+                            .padding(ResponsiveSizes.fontSize(8, for: sizeCategory, device: device))
+                    }
+                    
+                    Spacer()
+                    
+                    LikeButton(
+                        likes: currentLikes,
+                        isLiked: isLiked,
+                        onToggle: toggleLike,
+                        isDetailView: isDetailView
+                    )
+                    .padding(ResponsiveSizes.fontSize(8, for: sizeCategory, device: device))
                 }
-                
-                Spacer()
-                
-                LikeButton(
-                    likes: currentLikes,
-                    isLiked: isLiked,
-                    onToggle: toggleLike,
-                    isDetailView: isDetailView
-                )
-                .padding(ResponsiveSizes.fontSize(8, for: sizeCategory, device: device))
             }
         }
         .accessibilityElement(children: .contain)

@@ -12,6 +12,7 @@ struct ProductImage: View {
     let sizeCategory: ContentSizeCategory
     let device: UIDevice
     let imageSize: CGFloat?
+    @Binding var imageLoaded: Bool
     
     var body: some View {
         AsyncImage(url: URL(string: product.picture.url)) { image in
@@ -24,6 +25,7 @@ struct ProductImage: View {
                 )
                 .frame(maxWidth: .infinity)
                 .clipped()
+                .onAppear { imageLoaded = true }
         } placeholder: {
             ZStack {
                 RoundedRectangle(cornerRadius: ResponsiveSizes.imageSize(20, for: sizeCategory, device: device))
@@ -51,6 +53,7 @@ struct ProductImage: View {
         product: .preview,
         sizeCategory: .medium,
         device: UIDevice.current,
-        imageSize: 198
+        imageSize: 198,
+        imageLoaded: .constant(true)
     )
 }

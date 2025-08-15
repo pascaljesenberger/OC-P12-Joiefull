@@ -12,6 +12,7 @@ struct NavigableProductImage: View {
     let sizeCategory: ContentSizeCategory
     let device: UIDevice
     let imageSize: CGFloat?
+    @Binding var imageLoaded: Bool
     
     var body: some View {
         NavigationLink(destination: ProductDetailView(product: product)) {
@@ -19,7 +20,8 @@ struct NavigableProductImage: View {
                 product: product,
                 sizeCategory: sizeCategory,
                 device: device,
-                imageSize: imageSize
+                imageSize: imageSize,
+                imageLoaded: $imageLoaded
             )
         }
         .contentShape(Rectangle())
@@ -31,6 +33,7 @@ struct NavigableProductImage: View {
         product: .preview,
         sizeCategory: .medium,
         device: UIDevice.current,
-        imageSize: 198
+        imageSize: 198,
+        imageLoaded: .constant(true)
     )
 }
