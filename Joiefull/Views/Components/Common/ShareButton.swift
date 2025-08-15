@@ -27,5 +27,8 @@ struct ShareButton: View {
 }
 
 #Preview {
-    ShareButton(product: .preview)
+    ZStack {
+        Color.black.ignoresSafeArea()
+        ShareButton(product: .preview)
+    }
 }

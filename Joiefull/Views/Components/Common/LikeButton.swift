@@ -63,9 +63,11 @@ struct LikeButton: View {
 }
 
 #Preview {
-    VStack(spacing: 20) {
-        LikeButton(likes: 42, isLiked: false, onToggle: {}, isDetailView: true)
-        LikeButton(likes: 43, isLiked: true, onToggle: {}, isDetailView: false)
+    ZStack {
+        Color.black.ignoresSafeArea()
+        VStack(spacing: 20) {
+            LikeButton(likes: 42, isLiked: false, onToggle: {}, isDetailView: true)
+            LikeButton(likes: 43, isLiked: true, onToggle: {}, isDetailView: false)
+        }
     }
-    .background(Color.black)
 }

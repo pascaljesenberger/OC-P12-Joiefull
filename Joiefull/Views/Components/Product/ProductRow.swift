@@ -51,5 +51,7 @@ struct ProductRow: View {
 }
 
 #Preview {
-    ProductRow(category: .accessories, products: [.preview], imageSize: nil, isNavigationEnabled: false)
+    ScrollView {
+        ProductRow(category: .accessories, products: [.preview], imageSize: 198, isNavigationEnabled: false)
+    }
 }

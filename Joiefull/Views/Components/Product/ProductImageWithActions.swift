@@ -65,18 +65,22 @@ struct ProductImageWithActions: View {
 }
 
 #Preview {
-    VStack {
-        ProductImageWithActions(
-            product: .preview,
-            currentLikes: 12,
-            isLiked: false,
-            toggleLike: {},
-            sizeCategory: .small,
-            device: UIDevice.current,
-            imageSize: nil,
-            isNavigationEnabled: true,
-            showShareButton: true,
-            isDetailView: true
-        )
+    ScrollView {
+        VStack {
+            ProductImageWithActions(
+                product: .preview,
+                currentLikes: 12,
+                isLiked: false,
+                toggleLike: {},
+                sizeCategory: .small,
+                device: UIDevice.current,
+                imageSize: nil,
+                isNavigationEnabled: false,
+                showShareButton: true,
+                isDetailView: true
+            )
+        }
+        .padding()
+        .frame(maxWidth: .infinity)
     }
 }
