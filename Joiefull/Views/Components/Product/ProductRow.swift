@@ -35,10 +35,7 @@ struct ProductRow: View {
                 HStack(spacing: ResponsiveSizes.fontSize(8, for: sizeCategory, device: device)) {
                     ForEach(products) { product in
                         ProductItem(
-                            product: product,
-                            showDescription: false,
-                            imageSize: imageSize,
-                            isNavigationEnabled: isNavigationEnabled
+                            product: product
                         )
                     }
                 }

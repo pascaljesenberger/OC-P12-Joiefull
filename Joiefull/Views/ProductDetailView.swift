@@ -23,10 +23,6 @@ struct ProductDetailView: View {
             VStack {
                 ProductItem(
                     product: product,
-                    showDescription: true,
-                    imageSize: nil,
-                    isNavigationEnabled: false,
-                    showShareButton: true,
                     isDetailView: true
                 )
             }

@@ -17,13 +17,22 @@ struct ProductItem: View {
     let showShareButton: Bool
     let isDetailView: Bool
     
-    init(product: Product, showDescription: Bool = true, imageSize: CGFloat? = 198, isNavigationEnabled: Bool = true, showShareButton: Bool = false, isDetailView: Bool = false) {
+    init(product: Product, showDescription: Bool = false, imageSize: CGFloat? = 198, isNavigationEnabled: Bool = true, showShareButton: Bool = false, isDetailView: Bool = false) {
         self._viewModel = StateObject(wrappedValue: ProductViewModel(product: product))
-        self.showDescription = showDescription
-        self.imageSize = imageSize
-        self.isNavigationEnabled = isNavigationEnabled
-        self.showShareButton = showShareButton
-        self.isDetailView = isDetailView
+        
+        if isDetailView {
+            self.showDescription = true
+            self.imageSize = nil
+            self.isNavigationEnabled = false
+            self.showShareButton = true
+            self.isDetailView = true
+        } else {
+            self.showDescription = showDescription
+            self.imageSize = imageSize
+            self.isNavigationEnabled = isNavigationEnabled
+            self.showShareButton = showShareButton
+            self.isDetailView = false
+        }
     }
     
     var body: some View {
@@ -36,8 +45,6 @@ struct ProductItem: View {
                 sizeCategory: sizeCategory,
                 device: device,
                 imageSize: imageSize,
-                isNavigationEnabled: isNavigationEnabled,
-                showShareButton: showShareButton,
                 isDetailView: isDetailView
             )
             
@@ -52,7 +59,7 @@ struct ProductItem: View {
 #Preview {
     ScrollView {
         VStack(spacing: 40) {
-            ProductItem(product: .preview, showDescription: true, imageSize: nil, isNavigationEnabled: false, showShareButton: true, isDetailView: true)
+            ProductItem(product: .preview, isDetailView: true)
             ProductItem(product: .preview, showDescription: false, imageSize: 198, isNavigationEnabled: true)
         }
         .padding(.horizontal)

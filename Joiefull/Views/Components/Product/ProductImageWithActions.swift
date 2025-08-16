@@ -15,10 +15,16 @@ struct ProductImageWithActions: View {
     let sizeCategory: ContentSizeCategory
     let device: UIDevice
     let imageSize: CGFloat?
-    let isNavigationEnabled: Bool
-    let showShareButton: Bool
     let isDetailView: Bool
     @State private var imageLoaded = false
+    
+    private var isNavigationEnabled: Bool {
+        !isDetailView
+    }
+    
+    private var showShareButton: Bool {
+        isDetailView
+    }
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -75,8 +81,6 @@ struct ProductImageWithActions: View {
                 sizeCategory: .small,
                 device: UIDevice.current,
                 imageSize: nil,
-                isNavigationEnabled: false,
-                showShareButton: true,
                 isDetailView: true
             )
         }
