@@ -80,7 +80,7 @@ struct ProductImageWithActions: View {
                 toggleLike: {},
                 sizeCategory: .small,
                 device: UIDevice.current,
-                imageSize: nil,
+                imageSize: 360,
                 isDetailView: true
             )
         }

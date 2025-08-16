@@ -20,8 +20,8 @@ struct ProductImage: View {
                 .resizable()
                 .scaledToFill()
                 .frame(
-                    width: imageSize != nil ? ResponsiveSizes.imageSize(imageSize!, for: sizeCategory, device: device) : nil,
-                    height: imageSize != nil ? ResponsiveSizes.imageSize(imageSize!, for: sizeCategory, device: device) : nil
+                    maxWidth: imageSize != nil ? ResponsiveSizes.imageSize(imageSize!, for: sizeCategory, device: device) : nil,
+                    maxHeight: imageSize != nil ? ResponsiveSizes.imageSize(imageSize!, for: sizeCategory, device: device) : nil
                 )
                 .frame(maxWidth: .infinity)
                 .clipped()
@@ -31,8 +31,8 @@ struct ProductImage: View {
                 RoundedRectangle(cornerRadius: ResponsiveSizes.imageSize(20, for: sizeCategory, device: device))
                     .fill(Color.gray.opacity(0.3))
                     .frame(
-                        width: imageSize != nil ? ResponsiveSizes.imageSize(imageSize!, for: sizeCategory, device: device) : nil,
-                        height: imageSize != nil ? ResponsiveSizes.imageSize(imageSize!, for: sizeCategory, device: device) : nil
+                        maxWidth: imageSize != nil ? ResponsiveSizes.imageSize(imageSize!, for: sizeCategory, device: device) : nil,
+                        maxHeight: imageSize != nil ? ResponsiveSizes.imageSize(imageSize!, for: sizeCategory, device: device) : nil
                     )
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle())

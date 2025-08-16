@@ -22,7 +22,7 @@ struct ProductItem: View {
         
         if isDetailView {
             self.showDescription = true
-            self.imageSize = nil
+            self.imageSize = 360
             self.isNavigationEnabled = false
             self.showShareButton = true
             self.isDetailView = true
@@ -51,7 +51,7 @@ struct ProductItem: View {
             ProductInfo(product: viewModel.product, showDescription: showDescription, isDetailView: isDetailView)
                 .accessibilityElement(children: .combine)
         }
-        .frame(width: imageSize != nil ? ResponsiveSizes.imageSize(imageSize!, for: sizeCategory, device: device) : nil)
+        .frame(maxWidth: imageSize != nil ? ResponsiveSizes.imageSize(imageSize!, for: sizeCategory, device: device) : nil)
         .accessibilityElement(children: .contain)
     }
 }

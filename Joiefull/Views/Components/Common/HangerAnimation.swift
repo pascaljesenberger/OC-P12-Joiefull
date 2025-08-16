@@ -17,7 +17,7 @@ struct HangerAnimation: View {
             Image("hanger")
                 .resizable()
                 .scaledToFit()
-                .frame(width: ResponsiveSizes.imageSize(140, for: sizeCategory, device: device))
+                .frame(maxWidth: ResponsiveSizes.imageSize(140, for: sizeCategory, device: device))
                 .rotationEffect(.degrees(angle), anchor: .top)
                 .animation(
                     Animation.easeInOut(duration: 1)
