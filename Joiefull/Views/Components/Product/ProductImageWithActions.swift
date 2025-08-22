@@ -34,6 +34,7 @@ struct ProductImageWithActions: View {
                     sizeCategory: sizeCategory,
                     device: device,
                     imageSize: imageSize,
+                    isDetailView: isDetailView,
                     imageLoaded: $imageLoaded
                 )
             } else {
@@ -42,6 +43,7 @@ struct ProductImageWithActions: View {
                     sizeCategory: sizeCategory,
                     device: device,
                     imageSize: imageSize,
+                    isDetailView: isDetailView,
                     imageLoaded: $imageLoaded
                 )
             }

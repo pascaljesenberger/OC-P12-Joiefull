@@ -12,6 +12,7 @@ struct NavigableProductImage: View {
     let sizeCategory: ContentSizeCategory
     let device: UIDevice
     let imageSize: CGFloat?
+    let isDetailView: Bool
     @Binding var imageLoaded: Bool
     
     var body: some View {
@@ -21,6 +22,7 @@ struct NavigableProductImage: View {
                 sizeCategory: sizeCategory,
                 device: device,
                 imageSize: imageSize,
+                isDetailView: isDetailView,
                 imageLoaded: $imageLoaded
             )
         }
@@ -34,6 +36,7 @@ struct NavigableProductImage: View {
         sizeCategory: .medium,
         device: UIDevice.current,
         imageSize: 198,
+        isDetailView: false,
         imageLoaded: .constant(true)
     )
 }

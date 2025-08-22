@@ -12,6 +12,7 @@ struct ProductImage: View {
     let sizeCategory: ContentSizeCategory
     let device: UIDevice
     let imageSize: CGFloat?
+    let isDetailView: Bool
     @Binding var imageLoaded: Bool
     
     var body: some View {
@@ -28,16 +29,22 @@ struct ProductImage: View {
                 .onAppear { imageLoaded = true }
         } placeholder: {
             ZStack {
+                let placeholderSize: CGFloat = isDetailView ? 360 : 198
                 RoundedRectangle(cornerRadius: ResponsiveSizes.imageSize(20, for: sizeCategory, device: device))
                     .fill(Color.gray.opacity(0.3))
                     .frame(
-                        maxWidth: imageSize != nil ? ResponsiveSizes.imageSize(imageSize!, for: sizeCategory, device: device) : nil,
-                        maxHeight: imageSize != nil ? ResponsiveSizes.imageSize(imageSize!, for: sizeCategory, device: device) : nil
+                        width: ResponsiveSizes.imageSize(placeholderSize, for: sizeCategory, device: device),
+                        height: ResponsiveSizes.imageSize(placeholderSize, for: sizeCategory, device: device)
                     )
+                
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle())
                     .accessibilityLabel("Chargement de l'image")
             }
+            .frame(
+                width: ResponsiveSizes.imageSize(isDetailView ? 360 : 198, for: sizeCategory, device: device),
+                height: ResponsiveSizes.imageSize(isDetailView ? 360 : 198, for: sizeCategory, device: device)
+            )
             .frame(maxWidth: .infinity)
         }
         .cornerRadius(ResponsiveSizes.imageSize(20, for: sizeCategory, device: device))
@@ -54,6 +61,7 @@ struct ProductImage: View {
         sizeCategory: .medium,
         device: UIDevice.current,
         imageSize: 198,
+        isDetailView: false,
         imageLoaded: .constant(true)
     )
 }
