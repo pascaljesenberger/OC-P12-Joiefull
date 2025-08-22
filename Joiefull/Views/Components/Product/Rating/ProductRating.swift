@@ -14,7 +14,7 @@ struct ProductRating: View {
     @State private var reviewText = ""
 
     var body: some View {
-        VStack(spacing: 24) {
+        VStack(spacing: 14) {
             RatingStarsView(rating: $rating, sizeCategory: sizeCategory, device: device)
             ReviewTextView(reviewText: $reviewText)
         }

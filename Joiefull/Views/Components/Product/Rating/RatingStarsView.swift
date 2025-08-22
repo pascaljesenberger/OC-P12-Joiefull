@@ -13,7 +13,7 @@ struct RatingStarsView: View {
     var device: UIDevice
 
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: 8) {
             Image(systemName: "person.crop.circle")
                 .font(.system(size: ResponsiveSizes.fontSize(42, for: sizeCategory, device: device)))
                 .foregroundColor(Color.blue)

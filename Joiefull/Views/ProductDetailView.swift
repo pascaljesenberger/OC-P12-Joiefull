@@ -20,11 +20,13 @@ struct ProductDetailView: View {
     
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(spacing: 28) {
                 ProductItem(
                     product: product,
                     isDetailView: true
                 )
+                
+                ProductRating()
             }
         }
         .padding(.horizontal)

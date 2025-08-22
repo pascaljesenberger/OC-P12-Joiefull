@@ -57,7 +57,7 @@ struct ProductInfo: View {
             
             if showDescription {
                 Text(product.picture.description)
-                    .font(.system(size: ResponsiveSizes.fontSize(fontSize, for: sizeCategory, device: device)))
+                    .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device)))
                     .foregroundColor(.black)
             }
         }
