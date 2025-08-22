@@ -23,10 +23,9 @@ struct ProductImage: View {
                 .resizable()
                 .scaledToFill()
                 .frame(
-                    maxWidth: deviceEnvironment.imageSize(imageSize),
-                    maxHeight: deviceEnvironment.imageSize(imageSize)
+                    width: imageSize,
+                    height: imageSize
                 )
-                .frame(maxWidth: .infinity)
                 .clipped()
                 .onAppear { imageLoaded = true }
         } placeholder: {
@@ -34,8 +33,8 @@ struct ProductImage: View {
                 RoundedRectangle(cornerRadius: deviceEnvironment.imageSize(20))
                     .fill(Color.gray.opacity(0.3))
                     .frame(
-                        width: deviceEnvironment.imageSize(imageSize),
-                        height: deviceEnvironment.imageSize(imageSize)
+                        width: imageSize,
+                        height: imageSize
                     )
                 
                 ProgressView()
@@ -43,8 +42,8 @@ struct ProductImage: View {
                     .accessibilityLabel("Chargement de l'image")
             }
             .frame(
-                width: deviceEnvironment.imageSize(imageSize),
-                height: deviceEnvironment.imageSize(imageSize)
+                width: imageSize,
+                height: imageSize
             )
             .frame(maxWidth: .infinity)
         }
