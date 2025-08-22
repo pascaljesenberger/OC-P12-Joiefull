@@ -14,7 +14,7 @@ struct ProductImage: View {
     @Binding var imageLoaded: Bool
     
     private var imageSize: CGFloat {
-        isDetailView ? 360 : 198
+        deviceEnvironment.productImageSize(isDetailView: isDetailView)
     }
     
     var body: some View {

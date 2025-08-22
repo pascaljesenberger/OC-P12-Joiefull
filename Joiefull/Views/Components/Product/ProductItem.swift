@@ -10,29 +10,16 @@ import SwiftUI
 struct ProductItem: View {
     @StateObject private var viewModel: ProductViewModel
     @EnvironmentObject private var deviceEnvironment: DeviceEnvironment
-    let showDescription: Bool
-    let imageSize: CGFloat
-    let isNavigationEnabled: Bool
-    let showShareButton: Bool
     let isDetailView: Bool
     
-    init(product: Product, showDescription: Bool = false, imageSize: CGFloat? = nil, isNavigationEnabled: Bool = true, showShareButton: Bool = false, isDetailView: Bool = false) {
+    init(product: Product, isDetailView: Bool = false) {
         self._viewModel = StateObject(wrappedValue: ProductViewModel(product: product))
-        
-        if isDetailView {
-            self.showDescription = true
-            self.imageSize = 360
-            self.isNavigationEnabled = false
-            self.showShareButton = true
-            self.isDetailView = true
-        } else {
-            self.showDescription = showDescription
-            self.imageSize = imageSize ?? 198
-            self.isNavigationEnabled = isNavigationEnabled
-            self.showShareButton = showShareButton
-            self.isDetailView = false
-        }
+        self.isDetailView = isDetailView
     }
+    
+    private var showDescription: Bool { isDetailView }
+    private var isNavigationEnabled: Bool { !isDetailView }
+    private var showShareButton: Bool { isDetailView }
     
     var body: some View {
         VStack(alignment: .leading, spacing: deviceEnvironment.fontSize(isDetailView ? 16 : 8)) {
@@ -47,7 +34,7 @@ struct ProductItem: View {
             ProductInfo(product: viewModel.product, showDescription: showDescription, isDetailView: isDetailView)
                 .accessibilityElement(children: .combine)
         }
-        .frame(maxWidth: deviceEnvironment.imageSize(imageSize))
+        .frame(maxWidth: deviceEnvironment.productImageSize(isDetailView: isDetailView))
         .accessibilityElement(children: .contain)
     }
 }
@@ -57,7 +44,7 @@ struct ProductItem: View {
         VStack(spacing: 40) {
             ProductItem(product: .preview, isDetailView: true)
                 .environmentObject(DeviceEnvironment())
-            ProductItem(product: .preview, showDescription: false, imageSize: 198, isNavigationEnabled: true)
+            ProductItem(product: .preview)
                 .environmentObject(DeviceEnvironment())
         }
         .padding(.horizontal)

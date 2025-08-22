@@ -17,7 +17,7 @@ struct ProductImageWithActions: View {
     @State private var imageLoaded = false
     
     private var imageSize: CGFloat {
-        isDetailView ? 360 : 198
+        deviceEnvironment.productImageSize(isDetailView: isDetailView)
     }
     
     private var isNavigationEnabled: Bool {

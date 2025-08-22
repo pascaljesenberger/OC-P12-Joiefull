@@ -28,4 +28,8 @@ extension DeviceEnvironment {
     func fontSize(_ base: CGFloat) -> CGFloat {
         ResponsiveSizes.fontSize(base, for: sizeCategory, device: device)
     }
+    
+    func productImageSize(isDetailView: Bool) -> CGFloat {
+        imageSize(isDetailView ? 360 : 198)
+    }
 }

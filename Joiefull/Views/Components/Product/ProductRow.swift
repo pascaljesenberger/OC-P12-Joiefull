@@ -11,15 +11,6 @@ struct ProductRow: View {
     let category: Category
     let products: [Product]
     @EnvironmentObject private var deviceEnvironment: DeviceEnvironment
-    let imageSize: CGFloat?
-    let isNavigationEnabled: Bool
-    
-    init(category: Category, products: [Product], imageSize: CGFloat? = 198, isNavigationEnabled: Bool = true) {
-        self.category = category
-        self.products = products
-        self.imageSize = imageSize
-        self.isNavigationEnabled = isNavigationEnabled
-    }
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -33,9 +24,7 @@ struct ProductRow: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: deviceEnvironment.fontSize(8)) {
                     ForEach(products) { product in
-                        ProductItem(
-                            product: product
-                        )
+                        ProductItem(product: product)
                     }
                 }
                 .padding(.horizontal)
@@ -48,7 +37,7 @@ struct ProductRow: View {
 
 #Preview {
     ScrollView {
-        ProductRow(category: .accessories, products: [.preview], imageSize: 198, isNavigationEnabled: false)
+        ProductRow(category: .accessories, products: [.preview])
             .environmentObject(DeviceEnvironment())
     }
 }
