@@ -15,6 +15,7 @@
 		C640BD342E4688B900128701 /* HangerAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C640BD332E4688B900128701 /* HangerAnimation.swift */; };
 		C640BDDB2E46949D00128701 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C640BDDA2E46949D00128701 /* ProductViewModel.swift */; };
 		C640BF622E47E72B00128701 /* ResponsiveSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C640BF612E47E72B00128701 /* ResponsiveSizes.swift */; };
+		C64CBE6E2E58C8C300FA3CA9 /* DeviceEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64CBE6D2E58C8C300FA3CA9 /* DeviceEnvironment.swift */; };
 		C665580C2E51069900AA8324 /* ProductRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = C665580B2E51069900AA8324 /* ProductRating.swift */; };
 		C67174ED2E53903D009F987A /* RatingStarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67174EC2E53903D009F987A /* RatingStarsView.swift */; };
 		C67174EF2E5390C3009F987A /* ReviewTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67174EE2E5390C3009F987A /* ReviewTextView.swift */; };
@@ -61,6 +62,7 @@
 		C640BD332E4688B900128701 /* HangerAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangerAnimation.swift; sourceTree = "<group>"; };
 		C640BDDA2E46949D00128701 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
 		C640BF612E47E72B00128701 /* ResponsiveSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsiveSizes.swift; sourceTree = "<group>"; };
+		C64CBE6D2E58C8C300FA3CA9 /* DeviceEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceEnvironment.swift; sourceTree = "<group>"; };
 		C665580B2E51069900AA8324 /* ProductRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRating.swift; sourceTree = "<group>"; };
 		C67174EC2E53903D009F987A /* RatingStarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingStarsView.swift; sourceTree = "<group>"; };
 		C67174EE2E5390C3009F987A /* ReviewTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTextView.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			children = (
 				C640BF612E47E72B00128701 /* ResponsiveSizes.swift */,
 				C6CCB99B2E3FB2AD00AC10A2 /* ProductPreview.swift */,
+				C64CBE6D2E58C8C300FA3CA9 /* DeviceEnvironment.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				C62C76902E4E2DAB00D55554 /* NavigableProductImage.swift in Sources */,
 				C6CCB99A2E3FB1C000AC10A2 /* LikeButton.swift in Sources */,
 				C67174EF2E5390C3009F987A /* ReviewTextView.swift in Sources */,
+				C64CBE6E2E58C8C300FA3CA9 /* DeviceEnvironment.swift in Sources */,
 				C6CCB9912E3FA3E300AC10A2 /* HomeViewModel.swift in Sources */,
 				C6CCB9962E3FA71700AC10A2 /* ProductRow.swift in Sources */,
 				C640BD342E4688B900128701 /* HangerAnimation.swift in Sources */,

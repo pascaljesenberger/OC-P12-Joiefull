@@ -9,15 +9,14 @@ import SwiftUI
 
 struct ShareButton: View {
     let product: Product
-    @Environment(\.sizeCategory) private var sizeCategory
-    private let device = UIDevice.current
+    @EnvironmentObject private var deviceEnvironment: DeviceEnvironment
     
     var body: some View {
         ShareLink(item: URL(string: product.picture.url)!) {
             Image("share")
                 .resizable()
                 .scaledToFit()
-                .frame(maxWidth: ResponsiveSizes.imageSize(18, for: sizeCategory, device: device))
+                .frame(maxWidth: deviceEnvironment.imageSize(18))
                 .padding(10)
                 .background(Color.white)
                 .clipShape(Circle())
@@ -30,5 +29,6 @@ struct ShareButton: View {
     ZStack {
         Color.black.ignoresSafeArea()
         ShareButton(product: .preview)
+            .environmentObject(DeviceEnvironment())
     }
 }

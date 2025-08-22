@@ -9,18 +9,17 @@ import SwiftUI
 
 struct RatingStarsView: View {
     @Binding var rating: Int
-    var sizeCategory: ContentSizeCategory
-    var device: UIDevice
+    @EnvironmentObject private var deviceEnvironment: DeviceEnvironment
 
     var body: some View {
         HStack(spacing: 8) {
             Image(systemName: "person.crop.circle")
-                .font(.system(size: ResponsiveSizes.fontSize(42, for: sizeCategory, device: device)))
+                .font(.system(size: deviceEnvironment.fontSize(42)))
                 .foregroundColor(Color.blue)
 
             ForEach(1...5, id: \.self) { index in
                 Image(systemName: index <= rating ? "star.fill" : "star")
-                    .font(.system(size: ResponsiveSizes.fontSize(28, for: sizeCategory, device: device)))
+                    .font(.system(size: deviceEnvironment.fontSize(28)))
                     .foregroundColor(index <= rating ? Color.appOrange : .black.opacity(0.5))
                     .onTapGesture {
                         rating = index
@@ -34,5 +33,6 @@ struct RatingStarsView: View {
 
 #Preview {
     @Previewable @State var rating = 3
-    RatingStarsView(rating: $rating, sizeCategory: .small, device: UIDevice.current)
+    RatingStarsView(rating: $rating)
+        .environmentObject(DeviceEnvironment())
 }

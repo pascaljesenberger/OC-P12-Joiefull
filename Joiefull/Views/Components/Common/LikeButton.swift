@@ -12,8 +12,7 @@ struct LikeButton: View {
     let isLiked: Bool
     let onToggle: () -> Void
     let isDetailView: Bool
-    @Environment(\.sizeCategory) private var sizeCategory
-    private let device = UIDevice.current
+    @EnvironmentObject private var deviceEnvironment: DeviceEnvironment
     @State private var animate = false
     
     var body: some View {
@@ -29,13 +28,13 @@ struct LikeButton: View {
         } label: {
             HStack {
                 Image(systemName: isLiked ? "heart.fill" : "heart")
-                    .font(.system(size: ResponsiveSizes.fontSize(imageSize, for: sizeCategory, device: device)))
+                    .font(.system(size: deviceEnvironment.fontSize(imageSize)))
                     .foregroundColor(isLiked ? .red : .primary)
                     .scaleEffect(animate ? 1.4 : 1)
                     .animation(.easeOut(duration: 0.1), value: animate)
                 
                 Text("\(likes)")
-                    .font(.system(size: ResponsiveSizes.fontSize(fontSize, for: sizeCategory, device: device), weight: .semibold))
+                    .font(.system(size: deviceEnvironment.fontSize(fontSize), weight: .semibold))
                     .foregroundColor(isLiked ? .red : .primary)
                     .monospacedDigit()
                     .contentTransition(.numericText(value: Double(likes)))
@@ -43,8 +42,8 @@ struct LikeButton: View {
                         t.animation = .default
                     }
             }
-            .padding(.horizontal, ResponsiveSizes.fontSize(8, for: sizeCategory, device: device))
-            .padding(.vertical, ResponsiveSizes.fontSize(6, for: sizeCategory, device: device))
+            .padding(.horizontal, deviceEnvironment.fontSize(8))
+            .padding(.vertical, deviceEnvironment.fontSize(6))
             .background(Color.white)
             .clipShape(Capsule())
         }
@@ -67,7 +66,9 @@ struct LikeButton: View {
         Color.black.ignoresSafeArea()
         VStack(spacing: 20) {
             LikeButton(likes: 42, isLiked: false, onToggle: {}, isDetailView: true)
+                .environmentObject(DeviceEnvironment())
             LikeButton(likes: 43, isLiked: true, onToggle: {}, isDetailView: false)
+                .environmentObject(DeviceEnvironment())
         }
     }
 }

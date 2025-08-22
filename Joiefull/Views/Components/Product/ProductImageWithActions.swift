@@ -12,8 +12,7 @@ struct ProductImageWithActions: View {
     let currentLikes: Int
     let isLiked: Bool
     let toggleLike: () -> Void
-    let sizeCategory: ContentSizeCategory
-    let device: UIDevice
+    @EnvironmentObject private var deviceEnvironment: DeviceEnvironment
     let isDetailView: Bool
     @State private var imageLoaded = false
     
@@ -34,16 +33,12 @@ struct ProductImageWithActions: View {
             if isNavigationEnabled {
                 NavigableProductImage(
                     product: product,
-                    sizeCategory: sizeCategory,
-                    device: device,
                     isDetailView: isDetailView,
                     imageLoaded: $imageLoaded
                 )
             } else {
                 ProductImage(
                     product: product,
-                    sizeCategory: sizeCategory,
-                    device: device,
                     isDetailView: isDetailView,
                     imageLoaded: $imageLoaded
                 )
@@ -53,7 +48,7 @@ struct ProductImageWithActions: View {
                 VStack(alignment: .trailing) {
                     if showShareButton {
                         ShareButton(product: product)
-                            .padding(ResponsiveSizes.fontSize(8, for: sizeCategory, device: device))
+                            .padding(deviceEnvironment.fontSize(8))
                     }
                     
                     Spacer()
@@ -64,7 +59,7 @@ struct ProductImageWithActions: View {
                         onToggle: toggleLike,
                         isDetailView: isDetailView
                     )
-                    .padding(ResponsiveSizes.fontSize(8, for: sizeCategory, device: device))
+                    .padding(deviceEnvironment.fontSize(8))
                 }
             }
         }
@@ -81,12 +76,11 @@ struct ProductImageWithActions: View {
                 currentLikes: 12,
                 isLiked: false,
                 toggleLike: {},
-                sizeCategory: .small,
-                device: UIDevice.current,
                 isDetailView: true
             )
         }
         .padding()
         .frame(maxWidth: .infinity)
     }
+    .environmentObject(DeviceEnvironment())
 }

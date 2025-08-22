@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct ProductRating: View {
-    @Environment(\.sizeCategory) private var sizeCategory
-    private let device = UIDevice.current
     @State private var rating: Int = 0
     @State private var reviewText = ""
 
     var body: some View {
         VStack(spacing: 14) {
-            RatingStarsView(rating: $rating, sizeCategory: sizeCategory, device: device)
+            RatingStarsView(rating: $rating)
             ReviewTextView(reviewText: $reviewText)
         }
         .padding(.horizontal)
@@ -24,4 +22,5 @@ struct ProductRating: View {
 
 #Preview {
     ProductRating()
+        .environmentObject(DeviceEnvironment())
 }

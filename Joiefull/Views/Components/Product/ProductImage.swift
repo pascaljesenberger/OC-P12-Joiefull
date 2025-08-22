@@ -9,8 +9,7 @@ import SwiftUI
 
 struct ProductImage: View {
     let product: Product
-    let sizeCategory: ContentSizeCategory
-    let device: UIDevice
+    @EnvironmentObject private var deviceEnvironment: DeviceEnvironment
     let isDetailView: Bool
     @Binding var imageLoaded: Bool
     
@@ -24,19 +23,19 @@ struct ProductImage: View {
                 .resizable()
                 .scaledToFill()
                 .frame(
-                    maxWidth: ResponsiveSizes.imageSize(imageSize, for: sizeCategory, device: device),
-                    maxHeight: ResponsiveSizes.imageSize(imageSize, for: sizeCategory, device: device)
+                    maxWidth: deviceEnvironment.imageSize(imageSize),
+                    maxHeight: deviceEnvironment.imageSize(imageSize)
                 )
                 .frame(maxWidth: .infinity)
                 .clipped()
                 .onAppear { imageLoaded = true }
         } placeholder: {
             ZStack {
-                RoundedRectangle(cornerRadius: ResponsiveSizes.imageSize(20, for: sizeCategory, device: device))
+                RoundedRectangle(cornerRadius: deviceEnvironment.imageSize(20))
                     .fill(Color.gray.opacity(0.3))
                     .frame(
-                        width: ResponsiveSizes.imageSize(imageSize, for: sizeCategory, device: device),
-                        height: ResponsiveSizes.imageSize(imageSize, for: sizeCategory, device: device)
+                        width: deviceEnvironment.imageSize(imageSize),
+                        height: deviceEnvironment.imageSize(imageSize)
                     )
                 
                 ProgressView()
@@ -44,12 +43,12 @@ struct ProductImage: View {
                     .accessibilityLabel("Chargement de l'image")
             }
             .frame(
-                width: ResponsiveSizes.imageSize(imageSize, for: sizeCategory, device: device),
-                height: ResponsiveSizes.imageSize(imageSize, for: sizeCategory, device: device)
+                width: deviceEnvironment.imageSize(imageSize),
+                height: deviceEnvironment.imageSize(imageSize)
             )
             .frame(maxWidth: .infinity)
         }
-        .cornerRadius(ResponsiveSizes.imageSize(20, for: sizeCategory, device: device))
+        .cornerRadius(deviceEnvironment.imageSize(20))
         .accessibilityElement()
         .accessibilityLabel("Image du produit : \(product.picture.description)")
         .accessibilityAddTraits(.isImage)
@@ -60,9 +59,8 @@ struct ProductImage: View {
 #Preview {
     ProductImage(
         product: .preview,
-        sizeCategory: .medium,
-        device: UIDevice.current,
         isDetailView: false,
         imageLoaded: .constant(true)
     )
+    .environmentObject(DeviceEnvironment())
 }

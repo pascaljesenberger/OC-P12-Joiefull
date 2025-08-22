@@ -9,9 +9,8 @@ import SwiftUI
 
 struct ProductDetailView: View {
     let product: Product
-    private let device = UIDevice.current
+    @EnvironmentObject private var deviceEnvironment: DeviceEnvironment
     @StateObject private var viewModel: ProductViewModel
-    @Environment(\.sizeCategory) private var sizeCategory
     
     init(product: Product) {
         self.product = product
@@ -35,4 +34,5 @@ struct ProductDetailView: View {
 
 #Preview {
     ProductDetailView(product: .preview)
+        .environmentObject(DeviceEnvironment())
 }

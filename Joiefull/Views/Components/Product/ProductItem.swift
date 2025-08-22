@@ -9,8 +9,7 @@ import SwiftUI
 
 struct ProductItem: View {
     @StateObject private var viewModel: ProductViewModel
-    @Environment(\.sizeCategory) private var sizeCategory
-    private let device = UIDevice.current
+    @EnvironmentObject private var deviceEnvironment: DeviceEnvironment
     let showDescription: Bool
     let imageSize: CGFloat
     let isNavigationEnabled: Bool
@@ -36,21 +35,19 @@ struct ProductItem: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: ResponsiveSizes.fontSize(isDetailView ? 16 : 8, for: sizeCategory, device: device)) {
+        VStack(alignment: .leading, spacing: deviceEnvironment.fontSize(isDetailView ? 16 : 8)) {
             ProductImageWithActions(
                 product: viewModel.product,
                 currentLikes: viewModel.currentLikes,
                 isLiked: viewModel.isLiked,
                 toggleLike: viewModel.toggleLike,
-                sizeCategory: sizeCategory,
-                device: device,
                 isDetailView: isDetailView
             )
             
             ProductInfo(product: viewModel.product, showDescription: showDescription, isDetailView: isDetailView)
                 .accessibilityElement(children: .combine)
         }
-        .frame(maxWidth: ResponsiveSizes.imageSize(imageSize, for: sizeCategory, device: device))
+        .frame(maxWidth: deviceEnvironment.imageSize(imageSize))
         .accessibilityElement(children: .contain)
     }
 }
@@ -59,7 +56,9 @@ struct ProductItem: View {
     ScrollView {
         VStack(spacing: 40) {
             ProductItem(product: .preview, isDetailView: true)
+                .environmentObject(DeviceEnvironment())
             ProductItem(product: .preview, showDescription: false, imageSize: 198, isNavigationEnabled: true)
+                .environmentObject(DeviceEnvironment())
         }
         .padding(.horizontal)
     }

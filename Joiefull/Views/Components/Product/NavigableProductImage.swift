@@ -9,8 +9,7 @@ import SwiftUI
 
 struct NavigableProductImage: View {
     let product: Product
-    let sizeCategory: ContentSizeCategory
-    let device: UIDevice
+    @EnvironmentObject private var deviceEnvironment: DeviceEnvironment
     let isDetailView: Bool
     @Binding var imageLoaded: Bool
     
@@ -18,8 +17,6 @@ struct NavigableProductImage: View {
         NavigationLink(destination: ProductDetailView(product: product)) {
             ProductImage(
                 product: product,
-                sizeCategory: sizeCategory,
-                device: device,
                 isDetailView: isDetailView,
                 imageLoaded: $imageLoaded
             )
@@ -31,9 +28,8 @@ struct NavigableProductImage: View {
 #Preview {
     NavigableProductImage(
         product: .preview,
-        sizeCategory: .medium,
-        device: UIDevice.current,
         isDetailView: false,
         imageLoaded: .constant(true)
     )
+    .environmentObject(DeviceEnvironment())
 }

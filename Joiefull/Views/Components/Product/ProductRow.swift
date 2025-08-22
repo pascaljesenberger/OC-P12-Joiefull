@@ -10,8 +10,7 @@ import SwiftUI
 struct ProductRow: View {
     let category: Category
     let products: [Product]
-    @Environment(\.sizeCategory) private var sizeCategory
-    private let device = UIDevice.current
+    @EnvironmentObject private var deviceEnvironment: DeviceEnvironment
     let imageSize: CGFloat?
     let isNavigationEnabled: Bool
     
@@ -25,14 +24,14 @@ struct ProductRow: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(category.displayName)
-                .font(.system(size: ResponsiveSizes.fontSize(22, for: sizeCategory, device: device), weight: .semibold))
+                .font(.system(size: deviceEnvironment.fontSize(22), weight: .semibold))
                 .foregroundColor(.black)
                 .padding(.horizontal)
                 .accessibilityAddTraits(.isHeader)
                 .accessibilityLabel("Catégorie \(category.displayName), \(products.count) produit\(products.count > 1 ? "s" : "")")
             
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: ResponsiveSizes.fontSize(8, for: sizeCategory, device: device)) {
+                HStack(spacing: deviceEnvironment.fontSize(8)) {
                     ForEach(products) { product in
                         ProductItem(
                             product: product
@@ -50,5 +49,6 @@ struct ProductRow: View {
 #Preview {
     ScrollView {
         ProductRow(category: .accessories, products: [.preview], imageSize: 198, isNavigationEnabled: false)
+            .environmentObject(DeviceEnvironment())
     }
 }

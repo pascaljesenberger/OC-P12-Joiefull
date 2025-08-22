@@ -9,18 +9,17 @@ import SwiftUI
 
 struct ProductInfo: View {
     let product: Product
-    @Environment(\.sizeCategory) private var sizeCategory
-    private let device = UIDevice.current
+    @EnvironmentObject private var deviceEnvironment: DeviceEnvironment
     let showDescription: Bool
     let isDetailView: Bool
     
     var body: some View {
         let fontSize: CGFloat = isDetailView ? 18 : 14
-        
-        VStack(alignment: .leading, spacing: ResponsiveSizes.fontSize(8, for: sizeCategory, device: device)) {
+
+        VStack(alignment: .leading, spacing: deviceEnvironment.fontSize(8)) {
             HStack {
                 Text(product.name)
-                    .font(.system(size: ResponsiveSizes.fontSize(fontSize, for: sizeCategory, device: device), weight: .semibold))
+                    .font(.system(size: deviceEnvironment.fontSize(fontSize), weight: .semibold))
                     .foregroundColor(.black)
                     .lineLimit(2)
                     .multilineTextAlignment(.leading)
@@ -29,12 +28,12 @@ struct ProductInfo: View {
                 
                 HStack(spacing: 2) {
                     Image(systemName: "star.fill")
-                        .font(.system(size: ResponsiveSizes.fontSize(fontSize, for: sizeCategory, device: device)))
+                        .font(.system(size: deviceEnvironment.fontSize(fontSize)))
                         .foregroundColor(.appOrange)
                         .accessibilityHidden(true)
                     
                     Text(product.rating)
-                        .font(.system(size: ResponsiveSizes.fontSize(fontSize, for: sizeCategory, device: device)))
+                        .font(.system(size: deviceEnvironment.fontSize(fontSize)))
                         .foregroundColor(.black)
                         .monospacedDigit()
                 }
@@ -42,14 +41,14 @@ struct ProductInfo: View {
             
             HStack {
                 Text(String(format: "%.2f €", product.price))
-                    .font(.system(size: ResponsiveSizes.fontSize(fontSize, for: sizeCategory, device: device)))
+                    .font(.system(size: deviceEnvironment.fontSize(fontSize)))
                     .foregroundColor(.black)
                 
                 Spacer()
                 
                 if product.original_price > product.price {
                     Text(String(format: "%.2f €", product.original_price))
-                        .font(.system(size: ResponsiveSizes.fontSize(fontSize, for: sizeCategory, device: device)))
+                        .font(.system(size: deviceEnvironment.fontSize(fontSize)))
                         .strikethrough()
                         .foregroundColor(.black.opacity(0.7))
                 }
@@ -57,12 +56,12 @@ struct ProductInfo: View {
             
             if showDescription {
                 Text(product.picture.description)
-                    .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device)))
+                    .font(.system(size: deviceEnvironment.fontSize(14)))
                     .foregroundColor(.black)
             }
         }
         .padding(.horizontal)
-        .frame(minHeight: ResponsiveSizes.imageSize(60, for: sizeCategory, device: device), alignment: .topLeading)
+        .frame(minHeight: deviceEnvironment.imageSize(60), alignment: .topLeading)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(accessibilityDescription)
         .accessibilityAddTraits(.isStaticText)
@@ -79,4 +78,5 @@ struct ProductInfo: View {
 
 #Preview {
     ProductInfo(product: .preview, showDescription: true, isDetailView: false)
+        .environmentObject(DeviceEnvironment())
 }

@@ -9,8 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
-    @Environment(\.sizeCategory) private var sizeCategory
-    private let device = UIDevice.current
+    @EnvironmentObject private var deviceEnvironment: DeviceEnvironment
     
     var body: some View {
         NavigationStack {
@@ -21,7 +20,7 @@ struct HomeView: View {
                     .accessibilityAddTraits(.updatesFrequently)
             } else if let error = viewModel.errorMessage {
                 Text(error)
-                    .font(.system(size: ResponsiveSizes.fontSize(24, for: sizeCategory, device: device), weight: .semibold))
+                    .font(.system(size: deviceEnvironment.fontSize(24), weight: .semibold))
                     .foregroundColor(.black)
                     .multilineTextAlignment(.center)
                     .padding()
@@ -31,7 +30,7 @@ struct HomeView: View {
                     .accessibilityAddTraits([.isStaticText, .playsSound])
             } else {
                 ScrollView {
-                    VStack(alignment: .leading, spacing: ResponsiveSizes.imageSize(24, for: sizeCategory, device: device)) {
+                    VStack(alignment: .leading, spacing: deviceEnvironment.imageSize(24)) {
                         ForEach(Category.allCases, id: \.self) { category in
                             let filtered = viewModel.products(for: category)
                             if !filtered.isEmpty {
@@ -50,4 +49,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
+        .environmentObject(DeviceEnvironment())
 }

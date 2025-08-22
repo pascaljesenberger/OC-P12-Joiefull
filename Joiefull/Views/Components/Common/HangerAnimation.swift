@@ -9,15 +9,14 @@ import SwiftUI
 
 struct HangerAnimation: View {
     @State private var angle: Double = -20
-    @Environment(\.sizeCategory) private var sizeCategory
-    private let device = UIDevice.current
+    @EnvironmentObject private var deviceEnvironment: DeviceEnvironment
     
     var body: some View {
         VStack {
             Image("hanger")
                 .resizable()
                 .scaledToFit()
-                .frame(maxWidth: ResponsiveSizes.imageSize(140, for: sizeCategory, device: device))
+                .frame(maxWidth: deviceEnvironment.imageSize(140))
                 .rotationEffect(.degrees(angle), anchor: .top)
                 .animation(
                     Animation.easeInOut(duration: 1)
@@ -27,7 +26,7 @@ struct HangerAnimation: View {
                 .padding(.bottom, 60)
             
             Text("Chargement des produits en cours...")
-                .font(.system(size: ResponsiveSizes.fontSize(14, for: sizeCategory, device: device)))
+                .font(.system(size: deviceEnvironment.fontSize(14)))
                 .foregroundColor(.black)
             
                 .onAppear {
@@ -43,4 +42,5 @@ struct HangerAnimation: View {
 
 #Preview {
     HangerAnimation()
+        .environmentObject(DeviceEnvironment())
 }
