@@ -22,14 +22,8 @@ class ProductService {
                 return completion(.failure(error))
             }
             
-            if let httpResponse = response as? HTTPURLResponse {
-            }
-            
             guard let data = data else {
                 return completion(.failure(URLError(.badServerResponse)))
-            }
-
-            if let jsonString = String(data: data, encoding: .utf8) {
             }
 
             do {
