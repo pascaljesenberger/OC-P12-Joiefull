@@ -12,12 +12,12 @@ struct ProductItem: View {
     @Environment(\.sizeCategory) private var sizeCategory
     private let device = UIDevice.current
     let showDescription: Bool
-    let imageSize: CGFloat?
+    let imageSize: CGFloat
     let isNavigationEnabled: Bool
     let showShareButton: Bool
     let isDetailView: Bool
     
-    init(product: Product, showDescription: Bool = false, imageSize: CGFloat? = 198, isNavigationEnabled: Bool = true, showShareButton: Bool = false, isDetailView: Bool = false) {
+    init(product: Product, showDescription: Bool = false, imageSize: CGFloat? = nil, isNavigationEnabled: Bool = true, showShareButton: Bool = false, isDetailView: Bool = false) {
         self._viewModel = StateObject(wrappedValue: ProductViewModel(product: product))
         
         if isDetailView {
@@ -28,7 +28,7 @@ struct ProductItem: View {
             self.isDetailView = true
         } else {
             self.showDescription = showDescription
-            self.imageSize = imageSize
+            self.imageSize = imageSize ?? 198
             self.isNavigationEnabled = isNavigationEnabled
             self.showShareButton = showShareButton
             self.isDetailView = false
@@ -44,14 +44,13 @@ struct ProductItem: View {
                 toggleLike: viewModel.toggleLike,
                 sizeCategory: sizeCategory,
                 device: device,
-                imageSize: imageSize,
                 isDetailView: isDetailView
             )
             
             ProductInfo(product: viewModel.product, showDescription: showDescription, isDetailView: isDetailView)
                 .accessibilityElement(children: .combine)
         }
-        .frame(maxWidth: imageSize != nil ? ResponsiveSizes.imageSize(imageSize!, for: sizeCategory, device: device) : nil)
+        .frame(maxWidth: ResponsiveSizes.imageSize(imageSize, for: sizeCategory, device: device))
         .accessibilityElement(children: .contain)
     }
 }

@@ -14,9 +14,12 @@ struct ProductImageWithActions: View {
     let toggleLike: () -> Void
     let sizeCategory: ContentSizeCategory
     let device: UIDevice
-    let imageSize: CGFloat?
     let isDetailView: Bool
     @State private var imageLoaded = false
+    
+    private var imageSize: CGFloat {
+        isDetailView ? 360 : 198
+    }
     
     private var isNavigationEnabled: Bool {
         !isDetailView
@@ -33,7 +36,6 @@ struct ProductImageWithActions: View {
                     product: product,
                     sizeCategory: sizeCategory,
                     device: device,
-                    imageSize: imageSize,
                     isDetailView: isDetailView,
                     imageLoaded: $imageLoaded
                 )
@@ -42,7 +44,6 @@ struct ProductImageWithActions: View {
                     product: product,
                     sizeCategory: sizeCategory,
                     device: device,
-                    imageSize: imageSize,
                     isDetailView: isDetailView,
                     imageLoaded: $imageLoaded
                 )
@@ -82,7 +83,6 @@ struct ProductImageWithActions: View {
                 toggleLike: {},
                 sizeCategory: .small,
                 device: UIDevice.current,
-                imageSize: 360,
                 isDetailView: true
             )
         }
