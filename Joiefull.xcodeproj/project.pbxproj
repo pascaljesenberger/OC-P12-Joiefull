@@ -124,8 +124,8 @@
 		C62C76922E4E32D200D55554 /* Product */ = {
 			isa = PBXGroup;
 			children = (
-				C6CCB9932E3FA6CD00AC10A2 /* ProductItem.swift */,
 				C6CCB9952E3FA71700AC10A2 /* ProductRow.swift */,
+				C6CCB9932E3FA6CD00AC10A2 /* ProductItem.swift */,
 				C62C76892E4E221700D55554 /* ProductImageWithActions.swift */,
 				C62C768F2E4E2DAB00D55554 /* NavigableProductImage.swift */,
 				C62C768D2E4E2C7900D55554 /* ProductImage.swift */,

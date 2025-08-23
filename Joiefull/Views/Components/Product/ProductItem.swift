@@ -10,10 +10,12 @@ import SwiftUI
 struct ProductItem: View {
     @StateObject private var viewModel: ProductViewModel
     @EnvironmentObject private var deviceEnvironment: DeviceEnvironment
+    @Binding var selectedProduct: Product?
     let isDetailView: Bool
     
-    init(product: Product, isDetailView: Bool = false) {
+    init(product: Product, selectedProduct: Binding<Product?> = .constant(nil), isDetailView: Bool = false) {
         self._viewModel = StateObject(wrappedValue: ProductViewModel(product: product))
+        self._selectedProduct = selectedProduct
         self.isDetailView = isDetailView
     }
     
@@ -28,6 +30,7 @@ struct ProductItem: View {
                 currentLikes: viewModel.currentLikes,
                 isLiked: viewModel.isLiked,
                 toggleLike: viewModel.toggleLike,
+                selectedProduct: $selectedProduct,
                 isDetailView: isDetailView
             )
             
@@ -42,9 +45,9 @@ struct ProductItem: View {
 #Preview {
     ScrollView {
         VStack(spacing: 40) {
-            ProductItem(product: .preview, isDetailView: true)
+            ProductItem(product: .preview, selectedProduct: .constant(nil), isDetailView: true)
                 .environmentObject(DeviceEnvironment())
-            ProductItem(product: .preview)
+            ProductItem(product: .preview, selectedProduct: .constant(nil))
                 .environmentObject(DeviceEnvironment())
         }
         .padding(.horizontal)

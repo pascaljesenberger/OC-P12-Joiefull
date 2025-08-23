@@ -10,6 +10,9 @@ import SwiftUI
 class DeviceEnvironment: ObservableObject {
     let device = UIDevice.current
     @Published var sizeCategory: ContentSizeCategory = .medium
+    var isIpad: Bool {
+            UIDevice.current.userInterfaceIdiom == .pad
+        }
     
     func updateSizeCategory(_ category: ContentSizeCategory = .medium) {
         sizeCategory = category

@@ -12,6 +12,7 @@ struct ProductImageWithActions: View {
     let currentLikes: Int
     let isLiked: Bool
     let toggleLike: () -> Void
+    @Binding var selectedProduct: Product?
     @EnvironmentObject private var deviceEnvironment: DeviceEnvironment
     let isDetailView: Bool
     @State private var imageLoaded = false
@@ -34,7 +35,8 @@ struct ProductImageWithActions: View {
                 NavigableProductImage(
                     product: product,
                     isDetailView: isDetailView,
-                    imageLoaded: $imageLoaded
+                    imageLoaded: $imageLoaded,
+                    selectedProduct: $selectedProduct
                 )
             } else {
                 ProductImage(
@@ -76,6 +78,7 @@ struct ProductImageWithActions: View {
                 currentLikes: 12,
                 isLiked: false,
                 toggleLike: {},
+                selectedProduct: .constant(nil),
                 isDetailView: true
             )
         }

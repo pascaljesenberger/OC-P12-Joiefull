@@ -10,6 +10,7 @@ import SwiftUI
 struct ProductRow: View {
     let category: Category
     let products: [Product]
+    @Binding var selectedProduct: Product?
     @EnvironmentObject private var deviceEnvironment: DeviceEnvironment
     
     var body: some View {
@@ -24,7 +25,7 @@ struct ProductRow: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: deviceEnvironment.fontSize(8)) {
                     ForEach(products) { product in
-                        ProductItem(product: product)
+                        ProductItem(product: product, selectedProduct: $selectedProduct)
                     }
                 }
                 .padding(.horizontal)
@@ -37,7 +38,7 @@ struct ProductRow: View {
 
 #Preview {
     ScrollView {
-        ProductRow(category: .accessories, products: [.preview])
+        ProductRow(category: .accessories, products: [.preview], selectedProduct: .constant(nil))
             .environmentObject(DeviceEnvironment())
     }
 }

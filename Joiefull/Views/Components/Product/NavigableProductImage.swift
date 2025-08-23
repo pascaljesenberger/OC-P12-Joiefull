@@ -12,14 +12,35 @@ struct NavigableProductImage: View {
     @EnvironmentObject private var deviceEnvironment: DeviceEnvironment
     let isDetailView: Bool
     @Binding var imageLoaded: Bool
+    @Binding var selectedProduct: Product?
     
     var body: some View {
-        NavigationLink(destination: ProductDetailView(product: product)) {
-            ProductImage(
-                product: product,
-                isDetailView: isDetailView,
-                imageLoaded: $imageLoaded
-            )
+        Group {
+            if deviceEnvironment.isIpad {
+                Button(action: {
+                    if selectedProduct?.id == product.id {
+                        selectedProduct = nil
+                    } else {
+                        selectedProduct = product
+                    }
+                }) {
+                    ProductImage(
+                        product: product,
+                        isDetailView: isDetailView,
+                        imageLoaded: $imageLoaded
+                    )
+                }
+            } else {
+                NavigationLink(
+                    destination: ProductDetailView(product: product, selectedProduct: .constant(nil))
+                ) {
+                    ProductImage(
+                        product: product,
+                        isDetailView: isDetailView,
+                        imageLoaded: $imageLoaded
+                    )
+                }
+            }
         }
         .contentShape(Rectangle())
     }
@@ -29,7 +50,8 @@ struct NavigableProductImage: View {
     NavigableProductImage(
         product: .preview,
         isDetailView: false,
-        imageLoaded: .constant(true)
+        imageLoaded: .constant(true),
+        selectedProduct: .constant(nil)
     )
     .environmentObject(DeviceEnvironment())
 }

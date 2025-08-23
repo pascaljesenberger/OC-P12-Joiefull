@@ -12,7 +12,7 @@ struct ProductDetailView: View {
     @EnvironmentObject private var deviceEnvironment: DeviceEnvironment
     @StateObject private var viewModel: ProductViewModel
     
-    init(product: Product) {
+    init(product: Product, selectedProduct: Binding<Product?> = .constant(nil)) {
         self.product = product
         _viewModel = StateObject(wrappedValue: ProductViewModel(product: product))
     }
