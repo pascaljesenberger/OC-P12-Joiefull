@@ -16,8 +16,8 @@ struct ProductList: View {
         GeometryReader { geometry in
             let isLandscape = geometry.size.width > geometry.size.height
             let detailViewWidth = isLandscape ?
-                geometry.size.width * 0.4 :
-                min(geometry.size.width * 0.8, 440)
+            geometry.size.width * 0.4 :
+            min(geometry.size.width * 0.8, 440)
             
             ZStack(alignment: .trailing) {
                 ScrollView {

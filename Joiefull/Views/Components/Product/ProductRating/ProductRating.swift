@@ -10,7 +10,7 @@ import SwiftUI
 struct ProductRating: View {
     @State private var rating: Int = 0
     @State private var reviewText = ""
-
+    
     var body: some View {
         VStack(spacing: 14) {
             RatingStars(rating: $rating)

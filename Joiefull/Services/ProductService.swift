@@ -25,7 +25,7 @@ class ProductService {
             guard let data = data else {
                 return completion(.failure(URLError(.badServerResponse)))
             }
-
+            
             do {
                 let products = try JSONDecoder().decode([Product].self, from: data)
                 completion(.success(products))

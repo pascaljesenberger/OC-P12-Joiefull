@@ -16,7 +16,7 @@ struct ProductInfo: View {
     
     var body: some View {
         let fontSize: CGFloat = isDetailView ?
-            (deviceEnvironment.isIpad ? 16 : 18) : 14
+        (deviceEnvironment.isIpad ? 16 : 18) : 14
         let isSelected = selectedProduct?.id == product.id
         
         VStack(alignment: .leading, spacing: deviceEnvironment.fontSize(8)) {

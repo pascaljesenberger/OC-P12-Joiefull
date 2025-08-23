@@ -20,12 +20,12 @@ struct ResponsiveSizes {
         case .extraExtraExtraLarge: multiplier = 1.4
         default: multiplier = 1.5
         }
-
+        
         let deviceMultiplier: CGFloat = device.userInterfaceIdiom == .pad ? 1.4 : 1.0
-
+        
         return base * multiplier * deviceMultiplier
     }
-
+    
     static func fontSize(_ base: CGFloat, for sizeCategory: ContentSizeCategory, device: UIDevice) -> CGFloat {
         let multiplier: CGFloat
         switch sizeCategory {
@@ -38,9 +38,9 @@ struct ResponsiveSizes {
         case .extraExtraExtraLarge: multiplier = 1.4
         default: multiplier = 1.5
         }
-
+        
         let deviceMultiplier: CGFloat = device.userInterfaceIdiom == .pad ? 1.3 : 1.0
-
+        
         return base * multiplier * deviceMultiplier
     }
 }

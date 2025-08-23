@@ -10,13 +10,13 @@ import SwiftUI
 struct RatingStars: View {
     @Binding var rating: Int
     @EnvironmentObject private var deviceEnvironment: DeviceEnvironment
-
+    
     var body: some View {
         HStack(spacing: 8) {
             Image(systemName: "person.crop.circle")
                 .font(.system(size: deviceEnvironment.fontSize(42)))
                 .foregroundColor(Color.blue)
-
+            
             ForEach(1...5, id: \.self) { index in
                 Image(systemName: index <= rating ? "star.fill" : "star")
                     .font(.system(size: deviceEnvironment.fontSize(28)))
