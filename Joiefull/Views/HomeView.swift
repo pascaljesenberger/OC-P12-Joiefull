@@ -31,24 +31,32 @@ struct HomeView: View {
                     .accessibilityAddTraits([.isStaticText, .playsSound])
             } else {
                 GeometryReader { geometry in
+                    let detailViewWidth = geometry.size.width * (geometry.size.width > geometry.size.height ? 0.4 : 0.54)
+                    
                     ZStack(alignment: .trailing) {
                         ScrollView {
                             VStack(alignment: .leading, spacing: deviceEnvironment.imageSize(24)) {
                                 ForEach(Category.allCases, id: \.self) { category in
                                     let filtered = viewModel.products(for: category)
                                     if !filtered.isEmpty {
-                                        ProductRow(category: category, products: filtered, selectedProduct: $selectedProduct)
+                                        ProductRow(
+                                            category: category,
+                                            products: filtered,
+                                            selectedProduct: $selectedProduct,
+                                            detailViewWidth: deviceEnvironment.isIpad && selectedProduct != nil ? detailViewWidth : 0
+                                        )
                                     }
                                 }
                             }
                             .padding(.top)
+                            .padding(.trailing, deviceEnvironment.isIpad && selectedProduct != nil ? detailViewWidth : 0)
                         }
                         .accessibilityLabel("Liste des produits par catégorie")
                         .accessibilityHint("Balayez vers le haut ou le bas pour naviguer entre les catégories")
                         
                         if deviceEnvironment.isIpad, let product = selectedProduct {
                             ProductDetailView(product: product)
-                                .frame(width: geometry.size.width * (geometry.size.width > geometry.size.height ? 0.4 : 0.54))
+                                .frame(width: detailViewWidth)
                                 .background(Color.white)
                                 .id(product.id)
                         }
