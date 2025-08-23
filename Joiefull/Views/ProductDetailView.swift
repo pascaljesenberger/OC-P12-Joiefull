@@ -24,7 +24,7 @@ struct ProductDetailView: View {
                     ProductItem(
                         product: product,
                         isDetailView: true,
-                        availableWidth: geometry.size.width - 32 // padding horizontal
+                        availableWidth: geometry.size.width - 32
                     )
                     .frame(maxWidth: .infinity)
                     

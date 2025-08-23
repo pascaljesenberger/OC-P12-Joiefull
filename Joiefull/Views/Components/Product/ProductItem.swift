@@ -25,7 +25,6 @@ struct ProductItem: View {
     private var isNavigationEnabled: Bool { !isDetailView }
     private var showShareButton: Bool { isDetailView }
     
-    // Calcule la largeur optimale pour la vue
     private var itemWidth: CGFloat {
         if isDetailView, let width = availableWidth {
             return width
@@ -61,10 +60,18 @@ struct ProductItem: View {
 #Preview {
     ScrollView {
         VStack(spacing: 40) {
-            ProductItem(product: .preview, selectedProduct: .constant(nil), isDetailView: true)
-                .environmentObject(DeviceEnvironment())
-            ProductItem(product: .preview, selectedProduct: .constant(nil))
-                .environmentObject(DeviceEnvironment())
+            ProductItem(
+                product: .preview,
+                selectedProduct: .constant(nil),
+                isDetailView: true
+            )
+            .environmentObject(DeviceEnvironment())
+            
+            ProductItem(
+                product: .preview,
+                selectedProduct: .constant(nil)
+            )
+            .environmentObject(DeviceEnvironment())
         }
         .padding(.horizontal)
     }

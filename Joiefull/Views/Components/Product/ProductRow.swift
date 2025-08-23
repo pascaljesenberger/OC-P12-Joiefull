@@ -27,8 +27,11 @@ struct ProductRow: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: deviceEnvironment.fontSize(8)) {
                         ForEach(products) { product in
-                            ProductItem(product: product, selectedProduct: $selectedProduct)
-                                .id(product.id)
+                            ProductItem(
+                                product: product,
+                                selectedProduct: $selectedProduct
+                            )
+                            .id(product.id)
                         }
                     }
                     .padding(.horizontal)

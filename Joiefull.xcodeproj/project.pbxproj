@@ -16,6 +16,7 @@
 		C640BDDB2E46949D00128701 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C640BDDA2E46949D00128701 /* ProductViewModel.swift */; };
 		C640BF622E47E72B00128701 /* ResponsiveSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C640BF612E47E72B00128701 /* ResponsiveSizes.swift */; };
 		C64CBE6E2E58C8C300FA3CA9 /* DeviceEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64CBE6D2E58C8C300FA3CA9 /* DeviceEnvironment.swift */; };
+		C64CBEE62E59614500FA3CA9 /* ProductList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64CBEE52E59614500FA3CA9 /* ProductList.swift */; };
 		C665580C2E51069900AA8324 /* ProductRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = C665580B2E51069900AA8324 /* ProductRating.swift */; };
 		C67174ED2E53903D009F987A /* RatingStarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67174EC2E53903D009F987A /* RatingStarsView.swift */; };
 		C67174EF2E5390C3009F987A /* ReviewTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67174EE2E5390C3009F987A /* ReviewTextView.swift */; };
@@ -63,6 +64,7 @@
 		C640BDDA2E46949D00128701 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
 		C640BF612E47E72B00128701 /* ResponsiveSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsiveSizes.swift; sourceTree = "<group>"; };
 		C64CBE6D2E58C8C300FA3CA9 /* DeviceEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceEnvironment.swift; sourceTree = "<group>"; };
+		C64CBEE52E59614500FA3CA9 /* ProductList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductList.swift; sourceTree = "<group>"; };
 		C665580B2E51069900AA8324 /* ProductRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRating.swift; sourceTree = "<group>"; };
 		C67174EC2E53903D009F987A /* RatingStarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingStarsView.swift; sourceTree = "<group>"; };
 		C67174EE2E5390C3009F987A /* ReviewTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTextView.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 		C62C76922E4E32D200D55554 /* Product */ = {
 			isa = PBXGroup;
 			children = (
+				C64CBEE52E59614500FA3CA9 /* ProductList.swift */,
 				C6CCB9952E3FA71700AC10A2 /* ProductRow.swift */,
 				C6CCB9932E3FA6CD00AC10A2 /* ProductItem.swift */,
 				C62C76892E4E221700D55554 /* ProductImageWithActions.swift */,
@@ -415,6 +418,7 @@
 				C640BF622E47E72B00128701 /* ResponsiveSizes.swift in Sources */,
 				C6CCB98E2E3FA33900AC10A2 /* ProductService.swift in Sources */,
 				C62C76942E4E33EE00D55554 /* ShareButton.swift in Sources */,
+				C64CBEE62E59614500FA3CA9 /* ProductList.swift in Sources */,
 				C6CCB9832E3F83C500AC10A2 /* JoiefullApp.swift in Sources */,
 				C62C76902E4E2DAB00D55554 /* NavigableProductImage.swift in Sources */,
 				C6CCB99A2E3FB1C000AC10A2 /* LikeButton.swift in Sources */,

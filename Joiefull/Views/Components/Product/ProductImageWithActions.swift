@@ -20,7 +20,6 @@ struct ProductImageWithActions: View {
     
     private var imageSize: CGFloat {
         if isDetailView, let width = availableWidth {
-            // L'image prend toute la largeur disponible, reste carrée
             return width
         }
         return deviceEnvironment.productImageSize(isDetailView: isDetailView)
