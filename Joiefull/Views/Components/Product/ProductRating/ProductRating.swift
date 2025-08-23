@@ -13,8 +13,8 @@ struct ProductRating: View {
 
     var body: some View {
         VStack(spacing: 14) {
-            RatingStarsView(rating: $rating)
-            ReviewTextView(reviewText: $reviewText)
+            RatingStars(rating: $rating)
+            ReviewText(reviewText: $reviewText)
         }
         .padding(.horizontal)
     }

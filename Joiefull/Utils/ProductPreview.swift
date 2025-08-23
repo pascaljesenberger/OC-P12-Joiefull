@@ -7,6 +7,7 @@
 
 import Foundation
 
+#if DEBUG
 extension Product {
     static var preview: Product {
         Product(
@@ -23,3 +24,4 @@ extension Product {
         )
     }
 }
+#endif

@@ -1,5 +1,5 @@
 //
-//  RatingStarsView.swift
+//  RatingStars.swift
 //  Joiefull
 //
 //  Created by Pascal Jesenberger on 18/08/2025.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RatingStarsView: View {
+struct RatingStars: View {
     @Binding var rating: Int
     @EnvironmentObject private var deviceEnvironment: DeviceEnvironment
 
@@ -33,6 +33,6 @@ struct RatingStarsView: View {
 
 #Preview {
     @Previewable @State var rating = 3
-    RatingStarsView(rating: $rating)
+    RatingStars(rating: $rating)
         .environmentObject(DeviceEnvironment())
 }

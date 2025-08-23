@@ -56,4 +56,5 @@ struct ProductList: View {
         viewModel: HomeViewModel(),
         selectedProduct: .constant(nil)
     )
+    .environmentObject(DeviceEnvironment())
 }

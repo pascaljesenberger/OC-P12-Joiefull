@@ -1,5 +1,5 @@
 //
-//  ReviewTextView.swift
+//  ReviewText.swift
 //  Joiefull
 //
 //  Created by Pascal Jesenberger on 18/08/2025.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ReviewTextView: View {
+struct ReviewText: View {
     @Binding var reviewText: String
     @FocusState private var isFocused: Bool
     
@@ -36,7 +36,7 @@ struct ReviewTextView: View {
 
 #Preview {
     @Previewable @State var reviewText = ""
-    ReviewTextView(reviewText: $reviewText)
+    ReviewText(reviewText: $reviewText)
         .frame(height: 100)
         .padding()
 }
