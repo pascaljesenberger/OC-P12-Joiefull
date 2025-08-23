@@ -12,15 +12,18 @@ struct ProductInfo: View {
     @EnvironmentObject private var deviceEnvironment: DeviceEnvironment
     let showDescription: Bool
     let isDetailView: Bool
+    @Binding var selectedProduct: Product?
     
     var body: some View {
-        let fontSize: CGFloat = isDetailView ? 18 : 14
-
+        let fontSize: CGFloat = isDetailView ?
+            (deviceEnvironment.isIpad ? 16 : 18) : 14
+        let isSelected = selectedProduct?.id == product.id
+        
         VStack(alignment: .leading, spacing: deviceEnvironment.fontSize(8)) {
             HStack {
                 Text(product.name)
                     .font(.system(size: deviceEnvironment.fontSize(fontSize), weight: .semibold))
-                    .foregroundColor(.black)
+                    .foregroundColor(isSelected ? .appLightBlue : .black)
                     .lineLimit(2)
                     .multilineTextAlignment(.leading)
                 
@@ -34,7 +37,7 @@ struct ProductInfo: View {
                     
                     Text(product.rating)
                         .font(.system(size: deviceEnvironment.fontSize(fontSize)))
-                        .foregroundColor(.black)
+                        .foregroundColor(isSelected ? .appLightBlue : .black)
                         .monospacedDigit()
                 }
             }
@@ -42,7 +45,7 @@ struct ProductInfo: View {
             HStack {
                 Text(String(format: "%.2f €", product.price))
                     .font(.system(size: deviceEnvironment.fontSize(fontSize)))
-                    .foregroundColor(.black)
+                    .foregroundColor(isSelected ? .appLightBlue : .black)
                 
                 Spacer()
                 
@@ -50,7 +53,7 @@ struct ProductInfo: View {
                     Text(String(format: "%.2f €", product.original_price))
                         .font(.system(size: deviceEnvironment.fontSize(fontSize)))
                         .strikethrough()
-                        .foregroundColor(.black.opacity(0.7))
+                        .foregroundColor(isSelected ? .appLightBlue : .black.opacity(0.7))
                 }
             }
             
@@ -58,6 +61,7 @@ struct ProductInfo: View {
                 Text(product.picture.description)
                     .font(.system(size: deviceEnvironment.fontSize(14)))
                     .foregroundColor(.black)
+                    .fixedSize(horizontal: false, vertical: true)
             }
         }
         .padding(.horizontal)
@@ -69,14 +73,19 @@ struct ProductInfo: View {
     
     private var accessibilityDescription: String {
         let priceDescription = product.original_price > product.price
-            ? "Prix \(String(format: "%.2f", product.price)) euros, prix barré \(String(format: "%.2f", product.original_price)) euros"
-            : "Prix \(String(format: "%.2f", product.price)) euros"
+        ? "Prix \(String(format: "%.2f", product.price)) euros, prix barré \(String(format: "%.2f", product.original_price)) euros"
+        : "Prix \(String(format: "%.2f", product.price)) euros"
         
         return "\(product.name), note \(product.rating) sur 5 étoiles, \(priceDescription)"
     }
 }
 
 #Preview {
-    ProductInfo(product: .preview, showDescription: true, isDetailView: false)
-        .environmentObject(DeviceEnvironment())
+    ProductInfo(
+        product: .preview,
+        showDescription: true,
+        isDetailView: false,
+        selectedProduct: .constant(nil)
+    )
+    .environmentObject(DeviceEnvironment())
 }

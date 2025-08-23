@@ -18,17 +18,21 @@ struct ProductDetailView: View {
     }
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 28) {
-                ProductItem(
-                    product: product,
-                    isDetailView: true
-                )
-                
-                ProductRating()
+        GeometryReader { geometry in
+            ScrollView {
+                VStack(spacing: 28) {
+                    ProductItem(
+                        product: product,
+                        isDetailView: true,
+                        availableWidth: geometry.size.width - 32 // padding horizontal
+                    )
+                    .frame(maxWidth: .infinity)
+                    
+                    ProductRating()
+                }
+                .padding(.horizontal)
             }
         }
-        .padding(.horizontal)
     }
 }
 

@@ -15,10 +15,15 @@ struct ProductImageWithActions: View {
     @Binding var selectedProduct: Product?
     @EnvironmentObject private var deviceEnvironment: DeviceEnvironment
     let isDetailView: Bool
+    let availableWidth: CGFloat?
     @State private var imageLoaded = false
     
     private var imageSize: CGFloat {
-        deviceEnvironment.productImageSize(isDetailView: isDetailView)
+        if isDetailView, let width = availableWidth {
+            // L'image prend toute la largeur disponible, reste carrée
+            return width
+        }
+        return deviceEnvironment.productImageSize(isDetailView: isDetailView)
     }
     
     private var isNavigationEnabled: Bool {
@@ -36,13 +41,16 @@ struct ProductImageWithActions: View {
                     product: product,
                     isDetailView: isDetailView,
                     imageLoaded: $imageLoaded,
-                    selectedProduct: $selectedProduct
+                    selectedProduct: $selectedProduct,
+                    imageSize: imageSize
                 )
             } else {
                 ProductImage(
                     product: product,
                     isDetailView: isDetailView,
-                    imageLoaded: $imageLoaded
+                    imageLoaded: $imageLoaded,
+                    isSelected: false,
+                    customImageSize: imageSize
                 )
             }
             
@@ -79,7 +87,8 @@ struct ProductImageWithActions: View {
                 isLiked: false,
                 toggleLike: {},
                 selectedProduct: .constant(nil),
-                isDetailView: true
+                isDetailView: true,
+                availableWidth: 300
             )
         }
         .padding()

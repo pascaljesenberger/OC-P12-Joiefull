@@ -12,9 +12,26 @@ struct ProductImage: View {
     @EnvironmentObject private var deviceEnvironment: DeviceEnvironment
     let isDetailView: Bool
     @Binding var imageLoaded: Bool
+    let isSelected: Bool
+    let customImageSize: CGFloat?
+    
+    init(product: Product, isDetailView: Bool, imageLoaded: Binding<Bool>, isSelected: Bool = false, customImageSize: CGFloat? = nil) {
+        self.product = product
+        self.isDetailView = isDetailView
+        self._imageLoaded = imageLoaded
+        self.isSelected = isSelected
+        self.customImageSize = customImageSize
+    }
     
     private var imageSize: CGFloat {
-        deviceEnvironment.productImageSize(isDetailView: isDetailView)
+        if let customSize = customImageSize {
+            return customSize
+        }
+        
+        if isDetailView && deviceEnvironment.isIpad {
+            return deviceEnvironment.productImageSize(isDetailView: isDetailView) * 0.8
+        }
+        return deviceEnvironment.productImageSize(isDetailView: isDetailView)
     }
     
     var body: some View {
@@ -22,32 +39,27 @@ struct ProductImage: View {
             image
                 .resizable()
                 .scaledToFill()
-                .frame(
-                    width: imageSize,
-                    height: imageSize
-                )
+                .frame(width: imageSize, height: imageSize)
                 .clipped()
                 .onAppear { imageLoaded = true }
         } placeholder: {
             ZStack {
                 RoundedRectangle(cornerRadius: deviceEnvironment.imageSize(20))
                     .fill(Color.gray.opacity(0.3))
-                    .frame(
-                        width: imageSize,
-                        height: imageSize
-                    )
+                    .frame(width: imageSize, height: imageSize)
                 
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle())
                     .accessibilityLabel("Chargement de l'image")
             }
-            .frame(
-                width: imageSize,
-                height: imageSize
-            )
+            .frame(width: imageSize, height: imageSize)
             .frame(maxWidth: .infinity)
         }
         .cornerRadius(deviceEnvironment.imageSize(20))
+        .overlay(
+            RoundedRectangle(cornerRadius: deviceEnvironment.imageSize(20))
+                .strokeBorder(Color.appLightBlue, lineWidth: isSelected ? 3 : 0)
+        )
         .accessibilityElement()
         .accessibilityLabel("Image du produit : \(product.picture.description)")
         .accessibilityAddTraits(.isImage)
@@ -56,10 +68,19 @@ struct ProductImage: View {
 }
 
 #Preview {
-    ProductImage(
-        product: .preview,
-        isDetailView: false,
-        imageLoaded: .constant(true)
-    )
+    VStack {
+        ProductImage(
+            product: .preview,
+            isDetailView: false,
+            imageLoaded: .constant(true),
+            isSelected: true
+        )
+        ProductImage(
+            product: .preview,
+            isDetailView: false,
+            imageLoaded: .constant(true),
+            isSelected: false
+        )
+    }
     .environmentObject(DeviceEnvironment())
 }

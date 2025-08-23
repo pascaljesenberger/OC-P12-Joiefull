@@ -13,6 +13,7 @@ struct NavigableProductImage: View {
     let isDetailView: Bool
     @Binding var imageLoaded: Bool
     @Binding var selectedProduct: Product?
+    let imageSize: CGFloat
     
     var body: some View {
         Group {
@@ -27,7 +28,9 @@ struct NavigableProductImage: View {
                     ProductImage(
                         product: product,
                         isDetailView: isDetailView,
-                        imageLoaded: $imageLoaded
+                        imageLoaded: $imageLoaded,
+                        isSelected: selectedProduct?.id == product.id,
+                        customImageSize: imageSize
                     )
                 }
             } else {
@@ -37,7 +40,9 @@ struct NavigableProductImage: View {
                     ProductImage(
                         product: product,
                         isDetailView: isDetailView,
-                        imageLoaded: $imageLoaded
+                        imageLoaded: $imageLoaded,
+                        isSelected: false,
+                        customImageSize: imageSize
                     )
                 }
             }
@@ -51,7 +56,8 @@ struct NavigableProductImage: View {
         product: .preview,
         isDetailView: false,
         imageLoaded: .constant(true),
-        selectedProduct: .constant(nil)
+        selectedProduct: .constant(nil),
+        imageSize: 200
     )
     .environmentObject(DeviceEnvironment())
 }

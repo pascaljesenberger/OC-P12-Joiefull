@@ -31,7 +31,10 @@ struct HomeView: View {
                     .accessibilityAddTraits([.isStaticText, .playsSound])
             } else {
                 GeometryReader { geometry in
-                    let detailViewWidth = geometry.size.width * (geometry.size.width > geometry.size.height ? 0.4 : 0.54)
+                    let isLandscape = geometry.size.width > geometry.size.height
+                    let detailViewWidth = isLandscape ?
+                        geometry.size.width * 0.4 :
+                        min(geometry.size.width * 0.8, 440)
                     
                     ZStack(alignment: .trailing) {
                         ScrollView {
