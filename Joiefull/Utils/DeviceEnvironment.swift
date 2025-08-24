@@ -33,6 +33,7 @@ extension DeviceEnvironment {
     }
     
     func productImageSize(isDetailView: Bool) -> CGFloat {
-        imageSize(isDetailView ? 360 : 198)
+        let size = imageSize(isDetailView ? 360 : 198)
+        return max(size, 1)
     }
 }
