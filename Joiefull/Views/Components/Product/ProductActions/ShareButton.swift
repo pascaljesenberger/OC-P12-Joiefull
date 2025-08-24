@@ -22,6 +22,8 @@ struct ShareButton: View {
                 .clipShape(Circle())
                 .contentShape(Circle())
         }
+        .accessibilityLabel("Partager ce produit")
+        .accessibilityHint("Touchez deux fois pour ouvrir les options de partage")
     }
 }
 

@@ -26,10 +26,16 @@ struct ProductItem: View {
     private var showShareButton: Bool { isDetailView }
     
     private var itemWidth: CGFloat {
-        if isDetailView, let width = availableWidth {
-            return width
+        let width: CGFloat
+        if isDetailView, let w = availableWidth {
+            width = w
+        } else {
+            width = deviceEnvironment.productImageSize(isDetailView: isDetailView)
         }
-        return deviceEnvironment.productImageSize(isDetailView: isDetailView)
+        if !width.isFinite || width <= 0 {
+            return 100
+        }
+        return width
     }
     
     var body: some View {

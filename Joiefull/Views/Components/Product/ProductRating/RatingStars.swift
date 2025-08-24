@@ -16,6 +16,7 @@ struct RatingStars: View {
             Image(systemName: "person.crop.circle")
                 .font(.system(size: deviceEnvironment.fontSize(42)))
                 .foregroundColor(Color.blue)
+                .accessibilityHidden(true)
             
             ForEach(1...5, id: \.self) { index in
                 Image(systemName: index <= rating ? "star.fill" : "star")
@@ -24,6 +25,8 @@ struct RatingStars: View {
                     .onTapGesture {
                         rating = index
                     }
+                    .accessibilityLabel("Étoile \(index)")
+                    .accessibilityHint("Touchez deux fois pour donner une note de \(index) sur 5")
             }
             Spacer()
         }

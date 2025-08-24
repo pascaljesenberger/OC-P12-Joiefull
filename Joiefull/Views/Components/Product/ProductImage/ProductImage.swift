@@ -24,14 +24,18 @@ struct ProductImage: View {
     }
     
     private var imageSize: CGFloat {
+        let size: CGFloat
         if let customSize = customImageSize {
-            return customSize
+            size = customSize
+        } else if isDetailView && deviceEnvironment.isIpad {
+            size = deviceEnvironment.productImageSize(isDetailView: isDetailView) * 0.8
+        } else {
+            size = deviceEnvironment.productImageSize(isDetailView: isDetailView)
         }
-        
-        if isDetailView && deviceEnvironment.isIpad {
-            return deviceEnvironment.productImageSize(isDetailView: isDetailView) * 0.8
+        if !size.isFinite || size <= 0 {
+            return 100
         }
-        return deviceEnvironment.productImageSize(isDetailView: isDetailView)
+        return size
     }
     
     var body: some View {
@@ -64,6 +68,7 @@ struct ProductImage: View {
         .accessibilityLabel("Image du produit : \(product.picture.description)")
         .accessibilityAddTraits(.isImage)
         .clipped()
+        .contentShape(Rectangle())
     }
 }
 
